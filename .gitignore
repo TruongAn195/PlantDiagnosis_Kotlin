@@ -2,19 +2,26 @@
 .gradle/
 build/
 **/build/
-*.gradle.lockfile
+!gradle-wrapper.jar
 
-# Android Studio
+# Android Studio / IntelliJ
 .idea/
 *.iml
 *.ipr
 *.iws
 
-# Log & output
+# Local configuration
+local.properties
+
+# Log & OS files
 *.log
+.DS_Store
+
+# Android build outputs
 *.apk
 *.ap_
 *.aab
 
-# OS
-.DS_Store
+# Keystore files
+*.jks
+*.keystore

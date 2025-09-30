@@ -1,0 +1,230 @@
+package com.expeditee.plantdiagnosis.common
+
+import android.content.Context
+import android.content.ContextWrapper
+import android.content.res.Configuration
+import android.content.res.Resources
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.enableEdgeToEdge
+import androidx.annotation.CallSuper
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.viewbinding.ViewBinding
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.expeditee.plantdiagnosis.helper.AppConfigSettings
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Runnable
+import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
+import java.util.Locale
+
+typealias OnPerformBackPressed = () -> Unit
+
+abstract class IActivity<VB, VM, State> : AppCompatActivity()
+        where VB : ViewBinding, VM : IViewModel<State>, State : IViewModel.IState {
+
+    protected val appConfigSettings by inject<AppConfigSettings>()
+
+    protected val viewModel: VM by lazy {
+        android.util.Log.d("IActivity", "Initializing ViewModel for ${this::class.java.simpleName}")
+        this.getLazyViewModel().value
+    }
+    abstract fun getLazyViewModel(): Lazy<VM>
+
+    protected val viewBinding: VB by lazy {
+        android.util.Log.d("IActivity", "Initializing ViewBinding for ${this::class.java.simpleName}")
+        this.getLazyViewBinding().value
+    }
+    abstract fun getLazyViewBinding(): Lazy<VB>
+
+    private var onPerformBackPressed: OnPerformBackPressed? = null
+    private var onBackPressedCallback = object : OnBackPressedCallback(enabled = true) {
+        override fun handleOnBackPressed() {
+            onPerformBackPressed?.invoke()
+        }
+    }
+
+    private val connectivityManager: ConnectivityManager? by lazy {
+        ContextCompat.getSystemService(this@IActivity, ConnectivityManager::class.java)
+    }
+    private val networkCallback = object : ConnectivityManager.NetworkCallback() {
+        override fun onAvailable(network: Network) {
+            super.onAvailable(network)
+            runOnUiThread {
+                viewModel.setNetworkState(true)
+            }
+        }
+
+        override fun onLost(network: Network) {
+            super.onLost(network)
+            runOnUiThread {
+                viewModel.setNetworkState(false)
+            }
+        }
+    }
+
+    protected val TAG: String
+        get() = this::class.java.simpleName
+
+    override fun attachBaseContext(newBase: Context) {
+        var isoLanguage = appConfigSettings.currentLanguage
+        if (isoLanguage.isNullOrEmpty()) {
+            isoLanguage = Resources.getSystem().configuration.locales[0].language
+        }
+        val newLocale = Locale(isoLanguage)
+        Locale.setDefault(newLocale)
+        val configuration = newBase.resources.configuration
+        configuration.setLocale(newLocale)
+        val newContext = newBase.createConfigurationContext(configuration)
+        super.attachBaseContext(ContextWrapper(newContext))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        android.util.Log.d("IActivity", "onCreate called for ${this::class.java.simpleName}")
+        setupInit()
+        enableEdgeToEdge()
+        super.onCreate(savedInstanceState)
+
+        // ViewBinding doesn't need lifecycleOwner like DataBinding
+        makeDarkStatusBars()
+        registerBackPressedDispatcher()
+
+        android.util.Log.d("IActivity", "Calling initViews for ${this::class.java.simpleName}")
+        initViews(savedInstanceState)
+        initObservers()
+        initListeners()
+
+        observerNetworkState()
+        android.util.Log.d("IActivity", "onCreate completed for ${this::class.java.simpleName}")
+    }
+
+    protected open fun isLightStatusBar(): Boolean = true
+    private fun makeDarkStatusBars() {
+        WindowCompat.setDecorFitsSystemWindows(window, isFitsSystemWindows())
+        WindowInsetsControllerCompat(window, window.decorView).let { controller ->
+            controller.isAppearanceLightStatusBars = isLightStatusBar()
+            controller.isAppearanceLightNavigationBars = isLightStatusBar()
+            controller.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    }
+
+    protected open fun isFitsSystemWindows(): Boolean = true
+    protected open fun isHideSystemBars(): Boolean = false
+
+    protected fun applyInsetToView(
+        targetView: View = viewBinding.root,
+        block: (view: View, insets: WindowInsetsCompat) -> Unit
+    ) {
+        ViewCompat.setOnApplyWindowInsetsListener(targetView) { view, insetCompact ->
+            block(view, insetCompact)
+            return@setOnApplyWindowInsetsListener WindowInsetsCompat.CONSUMED
+        }
+    }
+
+    private fun registerBackPressedDispatcher() {
+        onBackPressedDispatcher.addCallback(this@IActivity, onBackPressedCallback)
+        onBackPressedCallback.isEnabled = onHandleBackPressed()
+    }
+
+    @CallSuper
+    protected open fun onHandleBackPressed(onBackPressed: OnPerformBackPressed? = null): Boolean {
+        this.onPerformBackPressed = onBackPressed
+        return onBackPressed != null
+    }
+
+    protected open fun setupInit() = Unit
+
+    abstract fun initViews(savedInstanceState: Bundle?)
+
+    @CallSuper
+    protected open fun initObservers() {
+        // Override in subclasses
+    }
+
+    protected open fun initListeners() = Unit
+
+    private fun observerNetworkState() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.networkState.collect { connected ->
+                    onNetworkState(connected)
+                }
+            }
+        }
+    }
+
+    protected open fun onNetworkState(connected: Boolean) = Unit
+
+    protected fun registerNetworkCallback() {
+        connectivityManager?.runCatching {
+            try {
+                val request = NetworkRequest.Builder()
+                    .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_VPN)
+                    .build()
+                requestNetwork(request, networkCallback)
+            } catch (e: Exception) {
+                registerDefaultNetworkCallback(networkCallback)
+            }
+        }
+    }
+
+    protected fun unregisterNetworkCallback() {
+        connectivityManager?.runCatching {
+            unregisterNetworkCallback(networkCallback)
+        }
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        var isoLanguage = appConfigSettings.currentLanguage
+        if (isoLanguage.isNullOrEmpty()) {
+            isoLanguage = Resources.getSystem().configuration.locales[0].language
+        }
+        val newLocale = Locale(isoLanguage)
+        Locale.setDefault(newLocale)
+        newConfig.setLocale(newLocale)
+    }
+
+    protected fun withViewModels(block: VM.() -> Unit) {
+        with(viewModel, block)
+    }
+
+    protected fun withViewBindings(block: VB.() -> Unit) {
+        with(viewBinding, block)
+    }
+
+    @CallSuper
+    override fun onStart() {
+        Handler(Looper.getMainLooper()).postDelayed({
+            WindowInsetsControllerCompat(window, window.decorView).let { controller ->
+                if (isHideSystemBars()) {
+                    controller.hide(WindowInsetsCompat.Type.systemBars())
+                } else {
+                    controller.show(WindowInsetsCompat.Type.statusBars())
+                    controller.hide(WindowInsetsCompat.Type.navigationBars())
+                }
+            }
+        }, 50L)
+        super.onStart()
+    }
+
+    override fun onDestroy() {
+        unregisterNetworkCallback()
+        super.onDestroy()
+    }
+}

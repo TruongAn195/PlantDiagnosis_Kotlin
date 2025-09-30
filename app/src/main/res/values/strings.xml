@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Plant Diagnosis</string>
+    <string name="camera_permission_required">Camera permission is required to take photos</string>
+    <string name="storage_permission_required">Storage permission is required to save photos</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="select_from_gallery">Select from Gallery</string>
+    <string name="analyzing">Analyzing...</string>
+    <string name="diagnosis_result">Diagnosis Result</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="confidence">Confidence</string>
+    <string name="disease_detected">Disease Detected</string>
+    <string name="treatment_suggestion">Treatment Suggestion</string>
+    <string name="retry">Retry</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="no_internet_connection">No internet connection</string>
+    
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_ask_ai">Ask AI</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Home Tab -->
+    <string name="welcome_message">Welcome to Plant Diagnosis</string>
+    <string name="scan_plant">Scan Plant</string>
+    <string name="recent_scans">Recent Scans</string>
+    
+    <!-- Explore Tab -->
+    <string name="plant_library">Plant Library</string>
+    <string name="disease_database">Disease Database</string>
+    <string name="care_tips">Care Tips</string>
+    <string name="search_plants">Search Plants</string>
+    
+    <!-- Ask AI Tab -->
+    <string name="ask_ai_title">Ask AI Assistant</string>
+    <string name="ask_ai_placeholder">Ask me anything about plants...</string>
+    <string name="send_message">Send</string>
+    <string name="ai_thinking">AI is thinking...</string>
+    
+    <!-- Settings Tab -->
+    <string name="settings_title">Settings</string>
+    <string name="language">Language</string>
+    <string name="notifications">Notifications</string>
+    <string name="about">About</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    
+    <!-- Splash Screen -->
+    <string name="splash_tagline">Identify plants with AI</string>
+    <string name="splash_version">v1.0.0</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Welcome to Plant Diagnosis</string>
+    <string name="onboarding_welcome_desc">Identify plants and diagnose diseases using AI technology</string>
+    <string name="onboarding_language_title">Language Selection</string>
+    <string name="onboarding_language_desc">Choose your preferred language for the best experience</string>
+    <string name="onboarding_get_started_title">Get Started</string>
+    <string name="onboarding_get_started_desc">Start identifying plants and keeping them healthy</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_select_language">Select Language</string>
+    <string name="onboarding_get_started">Get Started</string>
+    
+    <!-- Language Selection -->
+    <string name="select_language_title">Select Language</string>
+    <string name="language_english">English</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+</resources>

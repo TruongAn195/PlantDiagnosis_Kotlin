@@ -1,0 +1,210 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.expeditee.plantdiagnosis"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.CAMERA" />
+13-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:7:5-65
+13-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:7:22-62
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+14-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:8:5-80
+14-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:8:22-77
+15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+15-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:9:5-81
+15-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:9:22-78
+16
+17    <permission
+17-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+18        android:name="com.expeditee.plantdiagnosis.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+19        android:protectionLevel="signature" />
+19-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+20
+21    <uses-permission android:name="com.expeditee.plantdiagnosis.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+21-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+22
+23    <application
+23-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:11:5-46:19
+24        android:name="com.expeditee.plantdiagnosis.PlantDiagnosisApplication"
+24-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:12:9-50
+25        android:allowBackup="true"
+25-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:13:9-35
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.13.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8db65d985f93f23cb765724450991e7b/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+27        android:dataExtractionRules="@xml/data_extraction_rules"
+27-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:14:9-65
+28        android:debuggable="true"
+29        android:extractNativeLibs="false"
+30        android:fullBackupContent="@xml/backup_rules"
+30-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:15:9-54
+31        android:icon="@mipmap/ic_launcher"
+31-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:16:9-43
+32        android:label="@string/app_name"
+32-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:17:9-41
+33        android:roundIcon="@mipmap/ic_launcher_round"
+33-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:18:9-54
+34        android:supportsRtl="true"
+34-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:19:9-35
+35        android:testOnly="true"
+36        android:theme="@style/Theme.PlantDiagnosis" >
+36-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:20:9-52
+37
+38        <!-- Splash Activity (Launcher) -->
+39        <activity
+39-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:24:9-32:20
+40            android:name="com.expeditee.plantdiagnosis.SplashActivity"
+40-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:25:13-43
+41            android:exported="true"
+41-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:26:13-36
+42            android:theme="@style/Theme.PlantDiagnosis.Splash" >
+42-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:27:13-63
+43            <intent-filter>
+43-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:28:13-31:29
+44                <action android:name="android.intent.action.MAIN" />
+44-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:29:17-69
+44-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:29:25-66
+45
+46                <category android:name="android.intent.category.LAUNCHER" />
+46-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:30:17-77
+46-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:30:27-74
+47            </intent-filter>
+48        </activity>
+49
+50        <!-- Onboarding Activity -->
+51        <activity
+51-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:35:9-38:59
+52            android:name="com.expeditee.plantdiagnosis.OnboardingActivity"
+52-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:36:13-47
+53            android:exported="false"
+53-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:37:13-37
+54            android:theme="@style/Theme.PlantDiagnosis" />
+54-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:38:13-56
+55
+56        <!-- Main Activity -->
+57        <activity
+57-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:41:9-44:59
+58            android:name="com.expeditee.plantdiagnosis.ui.home.MainActivity"
+58-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:42:13-49
+59            android:exported="false"
+59-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:43:13-37
+60            android:theme="@style/Theme.PlantDiagnosis" />
+60-->/Users/tuongnguyen/Android_Projects/PlantDiagnosis_Kotlin/app/src/main/AndroidManifest.xml:44:13-56
+61
+62        <service
+62-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:24:9-33:19
+63            android:name="androidx.camera.core.impl.MetadataHolderService"
+63-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:25:13-75
+64            android:enabled="false"
+64-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:26:13-36
+65            android:exported="false" >
+65-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:27:13-37
+66            <meta-data
+66-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:30:13-32:89
+67                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+67-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:31:17-103
+68                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+68-->[androidx.camera:camera-camera2:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/beadcd2452e1633daf347337d450e6c8/transformed/camera-camera2-1.3.1/AndroidManifest.xml:32:17-86
+69        </service>
+70
+71        <provider
+71-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+72            android:name="androidx.startup.InitializationProvider"
+72-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+73            android:authorities="com.expeditee.plantdiagnosis.androidx-startup"
+73-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+74            android:exported="false" >
+74-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+75            <meta-data
+75-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+76-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+77                android:value="androidx.startup" />
+77-->[androidx.emoji2:emoji2:1.3.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/3a860033a7c9862282519a8b21ecc4ad/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.lifecycle:lifecycle-process:2.8.5] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/bf2ab376c833c1955d09c7626a8c7421/transformed/lifecycle-process-2.8.5/AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+79-->[androidx.lifecycle:lifecycle-process:2.8.5] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/bf2ab376c833c1955d09c7626a8c7421/transformed/lifecycle-process-2.8.5/AndroidManifest.xml:30:17-78
+80                android:value="androidx.startup" />
+80-->[androidx.lifecycle:lifecycle-process:2.8.5] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/bf2ab376c833c1955d09c7626a8c7421/transformed/lifecycle-process-2.8.5/AndroidManifest.xml:31:17-49
+81            <meta-data
+81-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+82                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+82-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+83                android:value="androidx.startup" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+84        </provider>
+85
+86        <uses-library
+86-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:25:9-27:40
+87            android:name="androidx.window.extensions"
+87-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:26:13-54
+88            android:required="false" />
+88-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:27:13-37
+89        <uses-library
+89-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:28:9-30:40
+90            android:name="androidx.window.sidecar"
+90-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:29:13-51
+91            android:required="false" />
+91-->[androidx.window:window:1.0.0] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/8e8336ac793ea3c41307c67e58f2113e/transformed/window-1.0.0/AndroidManifest.xml:30:13-37
+92
+93        <service
+93-->[androidx.room:room-runtime:2.6.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/4419c1e058e85d00017f2857eccafd63/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+94            android:name="androidx.room.MultiInstanceInvalidationService"
+94-->[androidx.room:room-runtime:2.6.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/4419c1e058e85d00017f2857eccafd63/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+95            android:directBootAware="true"
+95-->[androidx.room:room-runtime:2.6.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/4419c1e058e85d00017f2857eccafd63/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+96            android:exported="false" />
+96-->[androidx.room:room-runtime:2.6.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/4419c1e058e85d00017f2857eccafd63/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+97
+98        <receiver
+98-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+99            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+99-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+100            android:directBootAware="false"
+100-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+101            android:enabled="true"
+101-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+102            android:exported="true"
+102-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+103            android:permission="android.permission.DUMP" >
+103-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+104            <intent-filter>
+104-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+105                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+106            </intent-filter>
+107            <intent-filter>
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+108                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+108-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+109            </intent-filter>
+110            <intent-filter>
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+111                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+112            </intent-filter>
+113            <intent-filter>
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+114                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/tuongnguyen/.gradle/caches/9.0-milestone-1/transforms/727273ca16dd1190185d3db339463355/transformed/profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+115            </intent-filter>
+116        </receiver>
+117    </application>
+118
+119</manifest>

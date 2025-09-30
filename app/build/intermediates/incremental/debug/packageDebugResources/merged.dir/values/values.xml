@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="accent_green">#FF8BC34A</color>
+    <color name="black">#FF000000</color>
+    <color name="dark_gray">#FF424242</color>
+    <color name="dark_green">#FF2E7D32</color>
+    <color name="gray">#FF9E9E9E</color>
+    <color name="light_gray">#FFF5F5F5</color>
+    <color name="light_green">#FFC8E6C9</color>
+    <color name="primary_green">#FF4CAF50</color>
+    <color name="primary_green_dark">#FF388E3C</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="_4dp">4dp</dimen>
+    <dimen name="_70dp">70dp</dimen>
+    <string name="about">About</string>
+    <string name="ai_thinking">AI is thinking...</string>
+    <string name="analyzing">Analyzing...</string>
+    <string name="app_name">Plant Diagnosis</string>
+    <string name="ask_ai_placeholder">Ask me anything about plants...</string>
+    <string name="ask_ai_title">Ask AI Assistant</string>
+    <string name="camera_permission_required">Camera permission is required to take photos</string>
+    <string name="care_tips">Care Tips</string>
+    <string name="com.google.firebase.crashlytics.mapping_file_id" ns1:ignore="UnusedResources,TypographyDashes" translatable="false">00000000000000000000000000000000</string>
+    <string name="confidence">Confidence</string>
+    <string name="default_web_client_id" translatable="false">123456789-abcdefghijklmnopqrstuvwxyz.apps.googleusercontent.com</string>
+    <string name="diagnosis_result">Diagnosis Result</string>
+    <string name="disease_database">Disease Database</string>
+    <string name="disease_detected">Disease Detected</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="gcm_defaultSenderId" translatable="false">123456789</string>
+    <string name="google_api_key" translatable="false">AIzaSyDummyKeyForPlantDiagnosisApp123456789</string>
+    <string name="google_app_id" translatable="false">1:123456789:android:abcdef1234567890</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDummyKeyForPlantDiagnosisApp123456789</string>
+    <string name="google_storage_bucket" translatable="false">plant-diagnosis-app.appspot.com</string>
+    <string name="language">Language</string>
+    <string name="language_english">English</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_vietnamese">Tiếng Việt</string>
+    <string name="nav_ask_ai">Ask AI</string>
+    <string name="nav_explore">Explore</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_settings">Settings</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="notifications">Notifications</string>
+    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_get_started_desc">Start identifying plants and keeping them healthy</string>
+    <string name="onboarding_get_started_title">Get Started</string>
+    <string name="onboarding_language_desc">Choose your preferred language for the best experience</string>
+    <string name="onboarding_language_title">Language Selection</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_select_language">Select Language</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_welcome_desc">Identify plants and diagnose diseases using AI technology</string>
+    <string name="onboarding_welcome_title">Welcome to Plant Diagnosis</string>
+    <string name="plant_library">Plant Library</string>
+    <string name="plant_name">Plant Name</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="project_id" translatable="false">plant-diagnosis-app</string>
+    <string name="recent_scans">Recent Scans</string>
+    <string name="retry">Retry</string>
+    <string name="scan_plant">Scan Plant</string>
+    <string name="search_plants">Search Plants</string>
+    <string name="select_from_gallery">Select from Gallery</string>
+    <string name="select_language_title">Select Language</string>
+    <string name="send_message">Send</string>
+    <string name="settings_title">Settings</string>
+    <string name="splash_tagline">Identify plants with AI</string>
+    <string name="splash_version">v1.0.0</string>
+    <string name="storage_permission_required">Storage permission is required to save photos</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="treatment_suggestion">Treatment Suggestion</string>
+    <string name="welcome_message">Welcome to Plant Diagnosis</string>
+    <style name="BottomNavTextActive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="BottomNavTextInactive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="Theme.PlantDiagnosis" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="colorPrimary">@color/primary_green</item>
+        <item name="colorPrimaryVariant">@color/primary_green_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/accent_green</item>
+        <item name="colorSecondaryVariant">@color/dark_green</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:fitsSystemWindows">true</item>
+        
+    </style>
+    <style name="Theme.PlantDiagnosis.Splash" parent="Theme.PlantDiagnosis">
+        <item name="android:windowBackground">@color/primary_green</item>
+        <item name="android:statusBarColor">@color/primary_green</item>
+        <item name="android:navigationBarColor">@color/primary_green</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+</resources>

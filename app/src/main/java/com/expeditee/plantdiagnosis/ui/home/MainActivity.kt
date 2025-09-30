@@ -2,13 +2,19 @@ package com.expeditee.plantdiagnosis.ui.home
 
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.expeditee.plantdiagnosis.R
+import com.expeditee.plantdiagnosis.common.CommonViewModel
+import com.expeditee.plantdiagnosis.common.IActivity
+import com.expeditee.plantdiagnosis.common.IViewModel
+import com.expeditee.plantdiagnosis.common.OnPerformBackPressed
+import com.expeditee.plantdiagnosis.databinding.ActivityMainBinding
 import com.expeditee.plantdiagnosis.ui.askai.AskAiFragment
 import com.expeditee.plantdiagnosis.ui.explore.ExploreFragment
 import com.expeditee.plantdiagnosis.ui.settings.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import org.koin.android.ext.android.inject
 
 /**
  * MainActivity - Activity chính của ứng dụng Plant Diagnosis
@@ -24,7 +30,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
  * @author Plant Diagnosis Team
  * @since 1.0.0
  */
-class MainActivity : AppCompatActivity() {
+class MainActivity : IActivity<ActivityMainBinding, CommonViewModel, IViewModel.IState>() {
 
     companion object {
         // Các hằng số định nghĩa vị trí tab
@@ -39,13 +45,27 @@ class MainActivity : AppCompatActivity() {
     // Fragment hiện tại
     private var currentFragment: Fragment? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        
-        Log.d(TAG, "onCreate called")
+    override fun getLazyViewBinding() = lazy { 
+        ActivityMainBinding.inflate(layoutInflater) 
+    }
+
+    override fun getLazyViewModel() = lazy { 
+        inject<CommonViewModel>().value 
+    }
+
+    override fun initViews(savedInstanceState: Bundle?) {
+        Log.d(TAG, "initViews called")
         setupBottomNavigation() // Thiết lập BottomNavigationView
-        showHomeFragment()      // Hiển thị fragment Home mặc định
+        
+        // Hiển thị fragment Home mặc định sau khi view đã được tạo
+        if (savedInstanceState == null) {
+            // Đợi view được tạo hoàn toàn trước khi thêm fragment
+            viewBinding.root.post {
+                if (isFinishing.not()) {
+                    showHomeFragment()
+                }
+            }
+        }
     }
 
     /**
@@ -55,8 +75,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         Log.d(TAG, "setupBottomNavigation called")
         
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-        bottomNav.setOnItemSelectedListener { item ->
+        viewBinding.bottomNav.setOnItemSelectedListener { item ->
             val selectedPage = when (item.itemId) {
                 R.id.homeFragment -> HOME_PAGE
                 R.id.exploreFragment -> EXPLORE_PAGE
@@ -70,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
         
         // Thiết lập tab Home được chọn mặc định
-        bottomNav.selectedItemId = R.id.homeFragment
+        viewBinding.bottomNav.selectedItemId = R.id.homeFragment
         
         Log.d(TAG, "BottomNavigation setup completed")
     }
@@ -83,6 +102,12 @@ class MainActivity : AppCompatActivity() {
     private fun showFragment(page: Int) {
         Log.d(TAG, "showFragment called with page: $page")
         
+        // Kiểm tra Activity còn hoạt động không
+        if (isFinishing || isDestroyed) {
+            Log.w(TAG, "Activity is finishing or destroyed, skipping fragment creation")
+            return
+        }
+        
         val fragment = when (page) {
             HOME_PAGE -> HomeFragment()
             EXPLORE_PAGE -> ExploreFragment()
@@ -94,6 +119,16 @@ class MainActivity : AppCompatActivity() {
         // Chỉ thay thế fragment nếu khác với fragment hiện tại
         if (currentFragment?.javaClass != fragment.javaClass) {
             try {
+                // Kiểm tra fragmentContainer có tồn tại không
+                val container = findViewById<android.view.ViewGroup>(R.id.fragmentContainer)
+                if (container == null) {
+                    Log.e(TAG, "FragmentContainer not found, retrying...")
+                    viewBinding.root.post {
+                        showFragment(page)
+                    }
+                    return
+                }
+                
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragmentContainer, fragment)
                     .commit()
@@ -120,12 +155,6 @@ class MainActivity : AppCompatActivity() {
      * Nếu không phải ở tab Home, sẽ quay về tab Home
      * Nếu đã ở tab Home, sẽ thoát ứng dụng
      */
-    override fun onBackPressed() {
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
-        if (bottomNav.selectedItemId != R.id.homeFragment) {
-            bottomNav.selectedItemId = R.id.homeFragment
-        } else {
-            super.onBackPressed()
-        }
-    }
+    override fun onHandleBackPressed(onBackPressed: OnPerformBackPressed?) =
+        super.onHandleBackPressed { finish() }
 }

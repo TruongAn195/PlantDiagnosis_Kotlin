@@ -2,21 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/ic_home_nav"
-        android:title="@string/nav_home" />
-
+        android:icon="@drawable/ic_home"
+        android:title="@string/home" />
+    
     <item
         android:id="@+id/exploreFragment"
-        android:icon="@drawable/ic_explore_nav"
-        android:title="@string/nav_explore" />
-
+        android:icon="@drawable/ic_explore"
+        android:title="@string/explore" />
+    
     <item
         android:id="@+id/askAiFragment"
-        android:icon="@drawable/ic_ask_ai_nav"
-        android:title="@string/nav_ask_ai" />
-
+        android:icon="@drawable/ic_ai"
+        android:title="@string/ask_ai" />
+    
     <item
         android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_settings_nav"
-        android:title="@string/nav_settings" />
+        android:icon="@drawable/ic_settings"
+        android:title="@string/settings" />
 </menu>

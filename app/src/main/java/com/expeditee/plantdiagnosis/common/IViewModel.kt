@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.expeditee.plantdiagnosis.helper.AppConfigSettings
+import com.expeditee.plantdiagnosis.model.Language
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
@@ -25,8 +26,7 @@ abstract class IViewModel<State : IViewModel.IState>(application: Application) :
     protected val applicationContext: Context
         get() = getApplication<Application>().applicationContext
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { context, throwable ->
-        println("IViewModel: with $context: $throwable")
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         android.util.Log.e("IViewModel", "Coroutine exception: $throwable", throwable)
     }
 
@@ -73,8 +73,12 @@ class CommonViewModel(application: Application) : IViewModel<IViewModel.IState>(
             appConfigSettings.introCompleted = value
         }
 
+    internal var currentLanguage: Language?
+        get() = Language.fromIsoCode(appConfigSettings.currentLanguage)
+        set(newLanguage) {
+            appConfigSettings.currentLanguage = newLanguage?.isoCountry
+        }
 
     override fun onState(state: IState) {
-        /* no-op */
     }
 }

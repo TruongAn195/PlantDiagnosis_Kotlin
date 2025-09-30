@@ -76,7 +76,7 @@ abstract class IRecyclerView<T> : RecyclerView.Adapter<IRecyclerView<T>.ViewHold
 
         init {
             binding.root.setOnClickListener {
-                val position = adapterPosition
+                val position = bindingAdapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val item = getItem(position)
                     item?.let { onClick(it) }
@@ -94,7 +94,7 @@ abstract class IRecyclerView<T> : RecyclerView.Adapter<IRecyclerView<T>.ViewHold
         }
 
         override fun onClick(obj: T) {
-            val position = adapterPosition
+            val position = bindingAdapterPosition
             onClickView(binding, obj, position)
         }
     }

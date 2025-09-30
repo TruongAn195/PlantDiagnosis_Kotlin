@@ -16,10 +16,25 @@
     <string name="no_internet_connection">No internet connection</string>
     
     <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+    <string name="ask_ai">Ask AI</string>
+    <string name="settings">Settings</string>
     <string name="nav_home">Home</string>
     <string name="nav_explore">Explore</string>
     <string name="nav_ask_ai">Ask AI</string>
     <string name="nav_settings">Settings</string>
+    
+    <!-- Home Tab -->
+    <string name="welcome_to_plant_diagnosis">Welcome to Plant Diagnosis</string>
+    <string name="welcome_description">Identify plants and diagnose diseases with AI technology</string>
+    <string name="quick_actions">Quick Actions</string>
+    <string name="diagnose_plant">Diagnose Plant</string>
+    <string name="diagnosis_history">History</string>
+    <string name="explore_plants">Explore</string>
+    <string name="recent_diagnoses">Recent Diagnoses</string>
+    <string name="no_recent_diagnoses">No recent diagnoses</string>
+    <string name="start_diagnosing_plants">Start by taking a photo of your plant</string>
     
     <!-- Home Tab -->
     <string name="welcome_message">Welcome to Plant Diagnosis</string>
@@ -64,9 +79,11 @@
     
     <!-- Language Selection -->
     <string name="select_language_title">Select Language</string>
+    <string name="language_selection_description">Choose your preferred language for the best experience</string>
     <string name="language_english">English</string>
     <string name="language_vietnamese">Tiếng Việt</string>
     <string name="language_spanish">Español</string>
     <string name="language_french">Français</string>
     <string name="language_german">Deutsch</string>
+    <string name="skip">Skip</string>
 </resources>

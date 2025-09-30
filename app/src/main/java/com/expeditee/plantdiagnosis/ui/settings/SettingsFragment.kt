@@ -1,12 +1,11 @@
 package com.expeditee.plantdiagnosis.ui.settings
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.expeditee.plantdiagnosis.R
+import com.expeditee.plantdiagnosis.common.CommonViewModel
+import com.expeditee.plantdiagnosis.common.IFragment
+import com.expeditee.plantdiagnosis.common.IViewModel
+import com.expeditee.plantdiagnosis.databinding.FragmentSettingsBinding
+import org.koin.android.ext.android.inject
 
 /**
  * SettingsFragment - Fragment cài đặt của ứng dụng
@@ -16,24 +15,20 @@ import com.expeditee.plantdiagnosis.R
  * @author Plant Diagnosis Team
  * @since 1.0.0
  */
-class SettingsFragment : Fragment() {
+class SettingsFragment : IFragment<FragmentSettingsBinding, CommonViewModel, IViewModel.IState>(
+    FragmentSettingsBinding::inflate
+) {
     
     companion object {
         private const val TAG = "SettingsFragment"
     }
     
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "onCreateView called")
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+    override fun getLazyViewModel() = lazy { 
+        inject<CommonViewModel>().value 
     }
     
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated called")
+    override fun initViews() {
+        Log.d(TAG, "initViews called")
         setupClickListeners()
     }
     

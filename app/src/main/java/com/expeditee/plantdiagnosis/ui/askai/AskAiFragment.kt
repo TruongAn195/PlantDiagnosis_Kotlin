@@ -1,12 +1,11 @@
 package com.expeditee.plantdiagnosis.ui.askai
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.expeditee.plantdiagnosis.R
+import com.expeditee.plantdiagnosis.common.CommonViewModel
+import com.expeditee.plantdiagnosis.common.IFragment
+import com.expeditee.plantdiagnosis.common.IViewModel
+import com.expeditee.plantdiagnosis.databinding.FragmentAskAiBinding
+import org.koin.android.ext.android.inject
 
 /**
  * AskAiFragment - Fragment hỏi AI của ứng dụng
@@ -16,24 +15,20 @@ import com.expeditee.plantdiagnosis.R
  * @author Plant Diagnosis Team
  * @since 1.0.0
  */
-class AskAiFragment : Fragment() {
+class AskAiFragment : IFragment<FragmentAskAiBinding, CommonViewModel, IViewModel.IState>(
+    FragmentAskAiBinding::inflate
+) {
     
     companion object {
         private const val TAG = "AskAiFragment"
     }
     
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "onCreateView called")
-        return inflater.inflate(R.layout.fragment_ask_ai, container, false)
+    override fun getLazyViewModel() = lazy { 
+        inject<CommonViewModel>().value 
     }
     
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated called")
+    override fun initViews() {
+        Log.d(TAG, "initViews called")
         setupClickListeners()
     }
     

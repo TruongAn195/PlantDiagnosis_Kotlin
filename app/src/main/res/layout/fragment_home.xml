@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_gray"
+        android:background="@color/white"
         tools:context=".ui.home.HomeFragment">
 
         <ScrollView
@@ -19,62 +19,157 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_16dp">
 
-                <!-- Welcome Card -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardWelcome"
+                <!-- Header Section -->
+                <LinearLayout
+                    android:id="@+id/llHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
                     android:layout_marginBottom="@dimen/_16dp"
-                    app:cardCornerRadius="@dimen/_12dp"
-                    app:cardElevation="@dimen/_4dp"
                     app:layout_constraintTop_toTopOf="parent">
+
+                    <!-- Logo and App Name -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/ivLogo"
+                            android:layout_width="@dimen/_40dp"
+                            android:layout_height="@dimen/_40dp"
+                            android:src="@drawable/ic_plant"
+                            android:background="@drawable/bg_round_menu"
+                            android:padding="@dimen/_8dp"
+                            android:contentDescription="PlantPro Logo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_12dp"
+                            android:text="PlantPro"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/_20sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/notosans_bold" />
+
+                    </LinearLayout>
+
+                    <!-- Profile Picture -->
+                    <ImageView
+                        android:id="@+id/ivProfile"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:src="@drawable/ic_plant"
+                        android:background="@drawable/bg_round_menu"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="User Profile" />
+
+                </LinearLayout>
+
+                <!-- Greeting Section -->
+                <LinearLayout
+                    android:id="@+id/llGreeting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:layout_constraintTop_toBottomOf="@id/llHeader">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Good Morning, Sarah"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/_24sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosans_bold" />
+
+                    <TextView
+                        android:id="@+id/tvMotivationalMessage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:text="Let's grow something beautiful today"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="@dimen/_16sp"
+                        android:fontFamily="@font/notosans_regular" />
+
+                </LinearLayout>
+
+                <!-- Search Bar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:cardCornerRadius="@dimen/_12dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:cardBackgroundColor="@color/light_gray"
+                    app:layout_constraintTop_toBottomOf="@id/llGreeting">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
                         android:padding="@dimen/_16dp">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/notosans_bold"
-                            android:text="@string/welcome_to_plant_diagnosis"
-                            android:textColor="@color/primary"
-                            android:textSize="@dimen/_20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8dp"
-                            android:fontFamily="@font/notosans_regular"
-                            android:text="@string/welcome_description"
+                            android:layout_weight="1"
+                            android:text="Search plants name or snap a photo..."
                             android:textColor="@color/text_secondary"
-                            android:textSize="@dimen/_14sp" />
+                            android:textSize="@dimen/_14sp"
+                            android:fontFamily="@font/notosans_regular" />
+
+                        <ImageView
+                            android:id="@+id/ivCamera"
+                            android:layout_width="@dimen/_24dp"
+                            android:layout_height="@dimen/_24dp"
+                            android:src="@drawable/ic_camera"
+                            android:contentDescription="Camera" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Quick Actions -->
                 <TextView
-                    android:id="@+id/tvQuickActions"
+                    android:id="@+id/tvCoreFeatures"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_12dp"
-                    android:fontFamily="@font/notosans_bold"
-                    android:text="@string/quick_actions"
+                    android:layout_marginBottom="@dimen/_16dp"
+                    android:text="Best Deals"
                     android:textColor="@color/text_primary"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintTop_toBottomOf="@id/cardWelcome" />
+                    android:textSize="@dimen/_18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/notosans_bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardSearch"
+                    tools:ignore="MissingConstraints" />
 
-                <!-- Action Buttons Grid -->
+                <TextView
+                    android:id="@+id/tvViewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All >"
+                    android:textColor="@color/primary_green"
+                    android:textSize="@dimen/_14sp"
+                    android:fontFamily="@font/notosans_medium"
+                    app:layout_constraintTop_toTopOf="@id/tvCoreFeatures"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Features Grid -->
                 <LinearLayout
-                    android:id="@+id/llActionButtons"
+                    android:id="@+id/llFeaturesGrid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@id/tvQuickActions">
+                    app:layout_constraintTop_toBottomOf="@id/tvCoreFeatures">
 
                     <!-- Row 1 -->
                     <LinearLayout
@@ -84,48 +179,51 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardDiagnose"
+                            android:id="@+id/cardPlantIdentify"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_8dp"
-                            app:cardElevation="@dimen/_2dp">
+                            app:cardCornerRadius="@dimen/_12dp"
+                            app:cardElevation="@dimen/_2dp"
+                            app:strokeColor="@color/primary_green"
+                            app:strokeWidth="2dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:padding="@dimen/_12dp">
+                                android:padding="@dimen/_16dp">
 
                                 <ImageView
                                     android:layout_width="@dimen/_32dp"
                                     android:layout_height="@dimen/_32dp"
                                     android:src="@drawable/ic_camera"
-                                    android:contentDescription="@null" />
+                                    android:contentDescription="Plant Identify"
+                                    app:tint="@color/primary_green" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8dp"
-                                    android:fontFamily="@font/notosans_medium"
-                                    android:gravity="center"
-                                    android:text="@string/diagnose_plant"
+                                    android:text="Plant Identify"
                                     android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp" />
+                                    android:textSize="@dimen/_12sp"
+                                    android:fontFamily="@font/notosans_medium"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardHistory"
+                            android:id="@+id/cardMyPlants"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_8dp"
+                            app:cardCornerRadius="@dimen/_12dp"
                             app:cardElevation="@dimen/_2dp">
 
                             <LinearLayout
@@ -133,23 +231,24 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:padding="@dimen/_12dp">
+                                android:padding="@dimen/_16dp">
 
                                 <ImageView
                                     android:layout_width="@dimen/_32dp"
                                     android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_history"
-                                    android:contentDescription="@null" />
+                                    android:src="@drawable/ic_plant"
+                                    android:contentDescription="My Plants"
+                                    app:tint="@color/primary_green" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8dp"
-                                    android:fontFamily="@font/notosans_medium"
-                                    android:gravity="center"
-                                    android:text="@string/diagnosis_history"
+                                    android:text="My Plants"
                                     android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp" />
+                                    android:textSize="@dimen/_12sp"
+                                    android:fontFamily="@font/notosans_medium"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
@@ -161,15 +260,16 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_12dp"
                         android:orientation="horizontal">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardExplore"
+                            android:id="@+id/cardPlantHealth"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_8dp"
+                            app:cardCornerRadius="@dimen/_12dp"
                             app:cardElevation="@dimen/_2dp">
 
                             <LinearLayout
@@ -177,35 +277,36 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:padding="@dimen/_12dp">
+                                android:padding="@dimen/_16dp">
 
                                 <ImageView
                                     android:layout_width="@dimen/_32dp"
                                     android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_explore"
-                                    android:contentDescription="@null" />
+                                    android:src="@drawable/ic_plant"
+                                    android:contentDescription="Plant Health"
+                                    app:tint="@color/primary_green" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8dp"
-                                    android:fontFamily="@font/notosans_medium"
-                                    android:gravity="center"
-                                    android:text="@string/explore_plants"
+                                    android:text="Plant Health"
                                     android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp" />
+                                    android:textSize="@dimen/_12sp"
+                                    android:fontFamily="@font/notosans_medium"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/cardAskAi"
+                            android:id="@+id/cardReminders"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_8dp"
+                            app:cardCornerRadius="@dimen/_12dp"
                             app:cardElevation="@dimen/_2dp">
 
                             <LinearLayout
@@ -213,23 +314,24 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:orientation="vertical"
-                                android:padding="@dimen/_12dp">
+                                android:padding="@dimen/_16dp">
 
                                 <ImageView
                                     android:layout_width="@dimen/_32dp"
                                     android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_ai"
-                                    android:contentDescription="@null" />
+                                    android:src="@drawable/ic_history"
+                                    android:contentDescription="Reminders"
+                                    app:tint="@color/primary_green" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8dp"
-                                    android:fontFamily="@font/notosans_medium"
-                                    android:gravity="center"
-                                    android:text="@string/ask_ai"
+                                    android:text="Reminders"
                                     android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp" />
+                                    android:textSize="@dimen/_12sp"
+                                    android:fontFamily="@font/notosans_medium"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
@@ -239,55 +341,110 @@
 
                 </LinearLayout>
 
-                <!-- Recent Diagnoses -->
-                <TextView
-                    android:id="@+id/tvRecentDiagnoses"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_24dp"
-                    android:layout_marginBottom="@dimen/_12dp"
-                    android:fontFamily="@font/notosans_bold"
-                    android:text="@string/recent_diagnoses"
-                    android:textColor="@color/text_primary"
-                    android:textSize="@dimen/_16sp"
-                    app:layout_constraintTop_toBottomOf="@id/llActionButtons" />
-
-                <!-- Empty State -->
-                <LinearLayout
-                    android:id="@+id/llEmptyState"
+                <!-- Specialist Consultation Banner -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardSpecialist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_32dp"
-                    app:layout_constraintTop_toBottomOf="@id/tvRecentDiagnoses">
+                    android:layout_marginTop="@dimen/_24dp"
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="@dimen/_4dp"
+                    app:cardBackgroundColor="@color/green_light"
+                    app:layout_constraintTop_toBottomOf="@id/llFeaturesGrid">
 
-                    <ImageView
-                        android:layout_width="@dimen/_64dp"
-                        android:layout_height="@dimen/_64dp"
-                        android:src="@drawable/ic_plant"
-                        android:contentDescription="@null"
-                        android:alpha="0.5" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_16dp"
-                        android:fontFamily="@font/notosans_medium"
-                        android:text="@string/no_recent_diagnoses"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/_14sp" />
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_20dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4dp"
-                        android:fontFamily="@font/notosans_regular"
-                        android:text="@string/start_diagnosing_plants"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/_12sp" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
 
-                </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Consult with the Gardening Specialist"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/notosans_bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:text="Get expert plant advice"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="@dimen/_14sp"
+                                android:fontFamily="@font/notosans_regular" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnAskExpert"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_12dp"
+                                android:text="Ask the Expert"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sp"
+                                android:textStyle="bold"
+                                app:backgroundTint="@color/primary_green"
+                                app:cornerRadius="@dimen/_20dp"
+                                app:strokeWidth="0dp" />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/ivSpecialist"
+                            android:layout_width="@dimen/_80dp"
+                            android:layout_height="@dimen/_80dp"
+                            android:src="@drawable/ic_plant"
+                            android:contentDescription="Gardening Specialist"
+                            android:layout_marginStart="@dimen/_16dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Explore Plants Section -->
+                <TextView
+                    android:id="@+id/tvExplorePlants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_16dp"
+                    android:text="Explore Plants"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_18sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/notosans_bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardSpecialist" />
+
+                <TextView
+                    android:id="@+id/tvViewAllPlants"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All >"
+                    android:textColor="@color/primary_green"
+                    android:textSize="@dimen/_14sp"
+                    android:fontFamily="@font/notosans_medium"
+                    app:layout_constraintTop_toTopOf="@id/tvExplorePlants"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Plants Carousel -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPlants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:clipToPadding="false"
+                    android:paddingStart="@dimen/_4dp"
+                    android:paddingEnd="@dimen/_4dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvExplorePlants" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

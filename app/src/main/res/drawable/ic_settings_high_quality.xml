@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- Settings gear with higher quality -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,4C12.95,4 4,12.95 4,24s8.95,20 20,20 20,-8.95 20,-20S35.05,4 24,4zM24,40c-8.84,0 -16,-7.16 -16,-16s7.16,-16 16,-16 16,7.16 16,16S32.84,40 24,40z"/>
+    
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,8c-8.84,0 -16,7.16 -16,16s7.16,16 16,16 16,-7.16 16,-16S32.84,8 24,8zM24,36c-6.63,0 -12,-5.37 -12,-12s5.37,-12 12,-12 12,5.37 12,12S30.63,36 24,36z"/>
+    
+    <!-- Gear teeth -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,6L26,6L26,8L24,8z"/>
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,40L26,40L26,42L24,42z"/>
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M6,24L8,24L8,26L6,26z"/>
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M40,24L42,24L42,26L40,26z"/>
+    
+    <!-- Center circle -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,20c-2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4S26.21,20 24,20z"/>
+    
+</vector>

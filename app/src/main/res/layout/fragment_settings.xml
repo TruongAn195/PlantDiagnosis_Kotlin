@@ -3,214 +3,522 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/light_gray"
-        android:fillViewport="true">
+        tools:context=".ui.settings.SettingsFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <!-- Settings Header -->
-        <TextView
+        <!-- Header with Green Gradient -->
+        <LinearLayout
+            android:id="@+id/llHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_title"
-            android:textAlignment="center"
-            android:textColor="@color/dark_green"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
+            android:layout_height="@dimen/_56dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/primary_green"
+            android:padding="@dimen/_16dp"
+            android:paddingTop="@dimen/_24dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Language Setting -->
-        <androidx.cardview.widget.CardView
+            <!-- Back Arrow -->
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:src="@drawable/ic_arrow_right"
+                android:background="@drawable/bg_round_menu"
+                android:rotation="180"
+                android:contentDescription="Back" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Account"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/notosans_bold"
+                android:gravity="center" />
+
+            <!-- Settings Gear -->
+            <ImageView
+                android:id="@+id/ivSettings"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:src="@drawable/ic_settings"
+                android:background="@drawable/bg_round_menu"
+                android:padding="@dimen/_8dp"
+                android:contentDescription="Settings" />
+
+        </LinearLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/llHeader"
+            app:layout_constraintBottom_toBottomOf="parent">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
+                android:padding="@dimen/_16dp">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_settings_nav"
-                    android:layout_marginEnd="16dp" />
-
-                <TextView
-                    android:layout_width="0dp"
+                <!-- User Profile Section -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardUserProfile"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/language"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="@dimen/_4dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/_20dp">
+
+                        <!-- Profile Picture with Pro Badge -->
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/ivProfilePicture"
+                                android:layout_width="@dimen/_60dp"
+                                android:layout_height="@dimen/_60dp"
+                                android:src="@drawable/ic_user_high_quality"
+                                android:background="@drawable/bg_round_menu_high_quality"
+                                style="@style/HighQualityImageView"
+                                android:contentDescription="Profile Picture" />
+
+                            <!-- Pro Badge -->
+                            <TextView
+                                android:id="@+id/tvProBadge"
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="bottom|end"
+                                android:layout_marginBottom="@dimen/_4dp"
+                                android:layout_marginEnd="@dimen/_4dp"
+                                android:background="@drawable/bg_round_menu"
+                                android:backgroundTint="@color/primary_green"
+                                android:text="Pro"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_10sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:fontFamily="@font/notosans_bold" />
+
+                        </FrameLayout>
+
+                        <!-- User Info -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="@dimen/_16dp">
+
+                            <TextView
+                                android:id="@+id/tvUserName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="James Carter"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_18sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/notosans_bold" />
+
+                            <TextView
+                                android:id="@+id/tvUserEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:text="jamescarter@gmail.com"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="@dimen/_14sp"
+                                android:fontFamily="@font/notosans_regular" />
+
+                        </LinearLayout>
+
+                        <!-- Navigation Arrow -->
+                        <ImageView
+                            android:layout_width="@dimen/_24dp"
+                            android:layout_height="@dimen/_24dp"
+                            android:src="@drawable/ic_arrow_right"
+                            android:contentDescription="Navigate" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
 
                 <TextView
+                    android:id="@+id/tvPersonalization"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="English"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="@dimen/_12dp"
+                    android:text="Personalization"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/notosans_bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardUserProfile"
+                    tools:ignore="MissingConstraints" />
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Notifications Setting -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_settings_nav"
-                    android:layout_marginEnd="16dp" />
-
-                <TextView
-                    android:layout_width="0dp"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPersonalization"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/notifications"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:cardCornerRadius="@dimen/_12dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvPersonalization">
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Profile -->
+                        <LinearLayout
+                            android:id="@+id/llProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_user_high_quality"
+                                android:contentDescription="Profile"
+                                android:scaleType="centerInside"
+                                android:adjustViewBounds="true"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Profile"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/_56dp"
+                            android:background="@color/light_gray" />
+
+                        <!-- App Appearance -->
+                        <LinearLayout
+                            android:id="@+id/llAppAppearance"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_settings_high_quality"
+                                android:contentDescription="App Appearance"
+                                android:scaleType="centerInside"
+                                android:adjustViewBounds="true"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="App Appearance"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/_56dp"
+                            android:background="@color/light_gray" />
+
+                        <!-- Notifications -->
+                        <LinearLayout
+                            android:id="@+id/llNotifications"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_bell_high_quality"
+                                android:contentDescription="Notifications"
+                                android:scaleType="centerInside"
+                                android:adjustViewBounds="true"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Notifications"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/_56dp"
+                            android:background="@color/light_gray" />
+
+                        <!-- Snap Preference -->
+                        <LinearLayout
+                            android:id="@+id/llSnapPreference"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_camera_high_quality"
+                                android:contentDescription="Snap Preference"
+                                android:scaleType="centerInside"
+                                android:adjustViewBounds="true"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Snap Preference"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Account Section -->
+                <TextView
+                    android:id="@+id/tvAccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true" />
+                    android:layout_marginBottom="@dimen/_12dp"
+                    android:text="Account"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/notosans_bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardPersonalization" />
 
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- About -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_settings_nav"
-                    android:layout_marginEnd="16dp" />
-
-                <TextView
-                    android:layout_width="0dp"
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAccount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/about"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="@dimen/_24dp"
+                    app:cardCornerRadius="@dimen/_12dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:layout_constraintTop_toBottomOf="@id/tvAccount">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Account & Security -->
+                        <LinearLayout
+                            android:id="@+id/llAccountSecurity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_settings"
+                                android:contentDescription="Account &amp; Security"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Account &amp; Security"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/_56dp"
+                            android:background="@color/light_gray" />
+
+                        <!-- Linked Accounts -->
+                        <LinearLayout
+                            android:id="@+id/llLinkedAccounts"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_plant"
+                                android:contentDescription="Linked Accounts"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Linked Accounts"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="@dimen/_56dp"
+                            android:background="@color/light_gray" />
+
+                        <!-- Data & Analytics -->
+                        <LinearLayout
+                            android:id="@+id/llDataAnalytics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/_16dp">
+
+                            <ImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:src="@drawable/ic_ai"
+                                android:contentDescription="Data &amp; Analytics"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_16dp"
+                                android:text="Data &amp; Analytics"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_16sp"
+                                android:fontFamily="@font/notosans_medium" />
+
+                            <ImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:src="@drawable/ic_arrow_right"
+                                android:contentDescription="Navigate" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Subscription Section -->
                 <TextView
+                    android:id="@+id/tvSubscription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="v1.0.0"
-                    android:textColor="@color/gray"
-                    android:textSize="14sp" />
+                    android:layout_marginBottom="@dimen/_12dp"
+                    android:text="Subscription"
+                    android:textColor="@color/text_primary"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/notosans_bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardAccount"
+                    tools:ignore="MissingConstraints" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
+        </ScrollView>
 
-        <!-- Privacy Policy -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_settings_nav"
-                    android:layout_marginEnd="16dp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/privacy_policy"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Terms of Service -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="16dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_settings_nav"
-                    android:layout_marginEnd="16dp" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/terms_of_service"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

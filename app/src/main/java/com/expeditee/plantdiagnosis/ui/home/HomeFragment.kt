@@ -1,6 +1,8 @@
 package com.expeditee.plantdiagnosis.ui.home
 
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.expeditee.plantdiagnosis.R
 import com.expeditee.plantdiagnosis.common.CommonViewModel
 import com.expeditee.plantdiagnosis.common.IFragment
 import com.expeditee.plantdiagnosis.common.IViewModel
@@ -8,7 +10,7 @@ import com.expeditee.plantdiagnosis.databinding.FragmentHomeBinding
 import org.koin.android.ext.android.inject
 
 /**
- * HomeFragment - Fragment trang chủ của ứng dụng
+ * HomeFragment - Fragment trang chủ của ứng dụng PlantPro
  * 
  * Hiển thị thông tin chào mừng và các chức năng chính của ứng dụng
  * 
@@ -23,25 +25,69 @@ class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.
         private const val TAG = "HomeFragment"
     }
     
+    private lateinit var plantAdapter: PlantAdapter
+    
     override fun getLazyViewModel() = lazy { 
         inject<CommonViewModel>().value 
     }
     
     override fun initViews() {
         setupClickListeners()
+        setupPlantsRecyclerView()
     }
     
     private fun setupClickListeners() {
-        viewBinding.cardDiagnose.setOnClickListener {
+        // Core Features
+        viewBinding.cardPlantIdentify.setOnClickListener {
+            // Navigate to plant identification
         }
         
-        viewBinding.cardHistory.setOnClickListener {
+        viewBinding.cardMyPlants.setOnClickListener {
+            // Navigate to my plants
         }
         
-        viewBinding.cardExplore.setOnClickListener {
+        viewBinding.cardPlantHealth.setOnClickListener {
+            // Navigate to plant health
         }
         
-        viewBinding.cardAskAi.setOnClickListener {
+        viewBinding.cardReminders.setOnClickListener {
+            // Navigate to reminders
+        }
+        
+        // Search bar
+        viewBinding.cardSearch.setOnClickListener {
+            // Open search/camera
+        }
+        
+        // Specialist consultation
+        viewBinding.btnAskExpert.setOnClickListener {
+            // Navigate to expert consultation
+        }
+        
+        // View all buttons
+        viewBinding.tvViewAll.setOnClickListener {
+            // Show all features
+        }
+        
+        viewBinding.tvViewAllPlants.setOnClickListener {
+            // Show all plants
+        }
+    }
+    
+    private fun setupPlantsRecyclerView() {
+        val plants = listOf(
+            PlantItem("Fiddle Leaf Fig", R.drawable.ic_plant),
+            PlantItem("Snake Plant", R.drawable.ic_plant),
+            PlantItem("Monstera", R.drawable.ic_plant)
+        )
+        
+        plantAdapter = PlantAdapter(plants) { plant ->
+            // Handle plant click
+        }
+        
+        viewBinding.rvPlants.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = plantAdapter
         }
     }
 }

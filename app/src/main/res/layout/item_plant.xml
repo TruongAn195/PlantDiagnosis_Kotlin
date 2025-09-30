@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/_140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_12dp"
+        app:cardCornerRadius="@dimen/_12dp"
+        app:cardElevation="@dimen/_2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_12dp">
+
+            <ImageView
+                android:id="@+id/ivPlantImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_100dp"
+                android:scaleType="centerCrop"
+                android:background="@color/light_gray"
+                android:contentDescription="Plant Image" />
+
+            <TextView
+                android:id="@+id/tvPlantName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="Plant Name"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/_14sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/notosans_bold"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    
+    <!-- User head -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,8c-4.42,0 -8,3.58 -8,8s3.58,8 8,8 8,-3.58 8,-8S28.42,8 24,8zM24,20c-2.21,0 -4,-1.79 -4,-4s1.79,-4 4,-4 4,1.79 4,4S26.21,20 24,20z"/>
+    
+    <!-- User body -->
+    <path
+        android:fillColor="@color/primary_green"
+        android:pathData="M24,24c-6.63,0 -12,5.37 -12,12v4h24v-4C36,29.37 30.63,24 24,24zM24,28c4.42,0 8,3.58 8,8v2L16,38v-2C16,31.58 19.58,28 24,28z"/>
+    
+</vector>

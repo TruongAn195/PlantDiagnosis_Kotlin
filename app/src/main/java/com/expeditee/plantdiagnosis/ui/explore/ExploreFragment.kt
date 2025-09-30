@@ -1,12 +1,11 @@
 package com.expeditee.plantdiagnosis.ui.explore
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.expeditee.plantdiagnosis.R
+import com.expeditee.plantdiagnosis.common.CommonViewModel
+import com.expeditee.plantdiagnosis.common.IFragment
+import com.expeditee.plantdiagnosis.common.IViewModel
+import com.expeditee.plantdiagnosis.databinding.FragmentExploreBinding
+import org.koin.android.ext.android.inject
 
 /**
  * ExploreFragment - Fragment khám phá của ứng dụng
@@ -16,24 +15,20 @@ import com.expeditee.plantdiagnosis.R
  * @author Plant Diagnosis Team
  * @since 1.0.0
  */
-class ExploreFragment : Fragment() {
+class ExploreFragment : IFragment<FragmentExploreBinding, CommonViewModel, IViewModel.IState>(
+    FragmentExploreBinding::inflate
+) {
     
     companion object {
         private const val TAG = "ExploreFragment"
     }
     
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "onCreateView called")
-        return inflater.inflate(R.layout.fragment_explore, container, false)
+    override fun getLazyViewModel() = lazy { 
+        inject<CommonViewModel>().value 
     }
     
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated called")
+    override fun initViews() {
+        Log.d(TAG, "initViews called")
         setupClickListeners()
     }
     

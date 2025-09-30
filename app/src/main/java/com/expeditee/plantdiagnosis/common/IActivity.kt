@@ -24,6 +24,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import com.expeditee.plantdiagnosis.helper.AppConfigSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.launch
@@ -35,10 +36,11 @@ typealias OnPerformBackPressed = () -> Unit
 abstract class IActivity<VB, VM, State> : AppCompatActivity()
         where VB : ViewDataBinding, VM : IViewModel<State>, State : IViewModel.IState {
 
-    protected val viewModel: VM by this.getLazyViewModel()
+    protected val appConfigSettings by inject<AppConfigSettings>()
+    protected val viewModel: VM by lazy { getLazyViewModel().value }
     abstract fun getLazyViewModel(): Lazy<VM>
 
-    protected val viewBinding: VB by this.getLazyViewBinding()
+    protected val viewBinding: VB by lazy { getLazyViewBinding().value }
     abstract fun getLazyViewBinding(): Lazy<VB>
 
     private var onPerformBackPressed: OnPerformBackPressed? = null
@@ -71,7 +73,16 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
         get() = this::class.java.simpleName
 
     override fun attachBaseContext(newBase: Context) {
-
+        var isoLanguage = appConfigSettings.currentLanguage
+        if (isoLanguage.isNullOrEmpty()) {
+            isoLanguage = Resources.getSystem().configuration.locales[0].language
+        }
+        val newLocale = Locale(isoLanguage.toString())
+        Locale.setDefault(newLocale)
+        val configuration = newBase.resources.configuration
+        configuration.setLocale(newLocale)
+        val newContext = newBase.createConfigurationContext(configuration)
+        super.attachBaseContext(ContextWrapper(newContext))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,8 +98,6 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
         initViews(savedInstanceState)
         initObservers()
         initListeners()
-
-
     }
 
     protected open fun isLightStatusBar(): Boolean = true
@@ -143,11 +152,9 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
 
     @CallSuper
     protected open fun initObservers() {
-        viewModel
     }
 
     protected open fun initListeners() = Unit
-
 
     protected open fun onBillingPurchaseListener(hasPurchase: Boolean) = Unit
 
@@ -184,6 +191,17 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
             }
         }, 50L)
         super.onStart()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        var isoLanguage = appConfigSettings.currentLanguage
+        if (isoLanguage.isNullOrEmpty()) {
+            isoLanguage = Resources.getSystem().configuration.locales[0].language
+        }
+        val newLocale = Locale(isoLanguage.toString())
+        Locale.setDefault(newLocale)
+        newConfig.setLocale(newLocale)
     }
 
     override fun onDestroy() {

@@ -7,13 +7,25 @@ import com.expeditee.plantdiagnosis.ui.explore.ExploreFragment
 import com.expeditee.plantdiagnosis.ui.askai.AskAiFragment
 import com.expeditee.plantdiagnosis.ui.settings.SettingsFragment
 
+/**
+ * HomePagerAdapter - Adapter cho ViewPager2 trong HomeActivity
+ * 
+ * Quản lý 4 fragment chính của ứng dụng:
+ * - HOME_PAGE: HomeFragment - Trang chủ
+ * - EXPLORE_PAGE: ExploreFragment - Khám phá
+ * - ASK_AI_PAGE: AskAiFragment - Hỏi AI
+ * - SETTINGS_PAGE: SettingsFragment - Cài đặt
+ * 
+ * @author Plant Diagnosis Team
+ * @since 1.0.0
+ */
 class HomePagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 
     companion object {
-        const val HOME_PAGE = 0
-        const val EXPLORE_PAGE = 1
-        const val ASK_AI_PAGE = 2
-        const val SETTINGS_PAGE = 3
+        internal const val HOME_PAGE = 0
+        internal const val EXPLORE_PAGE = 1
+        internal const val ASK_AI_PAGE = 2
+        internal const val SETTINGS_PAGE = 3
     }
 
     override fun getItemCount(): Int = 4

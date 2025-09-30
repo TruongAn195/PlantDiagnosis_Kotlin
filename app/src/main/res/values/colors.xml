@@ -2,12 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+    <!-- Primary Colors -->
+    <color name="primary">#FF4CAF50</color>
+    <color name="primary_dark">#FF388E3C</color>
+    <color name="accent">#FF8BC34A</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FF212121</color>
+    <color name="text_secondary">#FF757575</color>
+    <color name="text_hint">#FFBDBDBD</color>
+    
+    <!-- Background Colors -->
+    <color name="background_primary">#FFFFFFFF</color>
+    <color name="background_secondary">#FFF5F5F5</color>
+    <color name="light_gray">#FFF5F5F5</color>
+    
+    <!-- Green Shades -->
     <color name="primary_green">#FF4CAF50</color>
     <color name="primary_green_dark">#FF388E3C</color>
     <color name="accent_green">#FF8BC34A</color>
-    <color name="light_green">#FFC8E6C9</color>
+    <color name="green_light">#FFC8E6C9</color>
+    <color name="green_dark">#FF2E7D32</color>
     <color name="dark_green">#FF2E7D32</color>
+    
+    <!-- Gray Shades -->
     <color name="gray">#FF9E9E9E</color>
-    <color name="light_gray">#FFF5F5F5</color>
     <color name="dark_gray">#FF424242</color>
+    
+    <!-- Bottom Navigation Colors -->
+    <color name="bottom_nav_selected">#FF4CAF50</color>
+    <color name="bottom_nav_unselected">#FF9E9E9E</color>
+    
+    <!-- Additional Colors -->
+    <color name="transparent">#00000000</color>
 </resources>

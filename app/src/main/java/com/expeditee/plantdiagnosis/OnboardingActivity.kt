@@ -7,7 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.expeditee.plantdiagnosis.databinding.ActivityOnboardingBinding
-import com.expeditee.plantdiagnosis.ui.home.MainActivity
+import com.expeditee.plantdiagnosis.ui.home.HomeActivity
 import com.expeditee.plantdiagnosis.ui.onboarding.OnboardingAdapter
 import com.expeditee.plantdiagnosis.ui.onboarding.OnboardingItem
 
@@ -19,11 +19,21 @@ class OnboardingActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityOnboardingBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        android.util.Log.d("OnboardingActivity", "onCreate called")
         
-        prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
-        setupOnboarding()
+        try {
+            binding = ActivityOnboardingBinding.inflate(layoutInflater)
+            setContentView(binding.root)
+            
+            prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+            setupOnboarding()
+            android.util.Log.d("OnboardingActivity", "onCreate completed successfully")
+        } catch (e: Exception) {
+            android.util.Log.e("OnboardingActivity", "Error in onCreate: ${e.message}", e)
+            // Fallback to HomeActivity if OnboardingActivity fails
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
     
     private fun setupOnboarding() {
@@ -34,9 +44,9 @@ class OnboardingActivity : AppCompatActivity() {
                 iconRes = R.drawable.ic_plant_placeholder
             ),
             OnboardingItem(
-                title = "Language Selection",
-                description = "Choose your preferred language for the best experience",
-                iconRes = R.drawable.ic_settings_nav
+                title = "AI-Powered Diagnosis",
+                description = "Get instant plant disease diagnosis with advanced AI technology",
+                iconRes = R.drawable.ic_ai
             ),
             OnboardingItem(
                 title = "Get Started",
@@ -52,8 +62,8 @@ class OnboardingActivity : AppCompatActivity() {
                     binding.viewPager.currentItem = 1
                 }
                 1 -> {
-                    // Language selection page
-                    showLanguageSelection()
+                    // Second page - continue
+                    binding.viewPager.currentItem = 2
                 }
                 2 -> {
                     // Last page - complete onboarding
@@ -95,8 +105,8 @@ class OnboardingActivity : AppCompatActivity() {
                 binding.btnNext.text = "Next"
             }
             1 -> {
-                binding.btnSkip.visibility = View.GONE
-                binding.btnNext.text = "Select Language"
+                binding.btnSkip.visibility = View.VISIBLE
+                binding.btnNext.text = "Next"
             }
             2 -> {
                 binding.btnSkip.visibility = View.GONE
@@ -105,21 +115,10 @@ class OnboardingActivity : AppCompatActivity() {
         }
     }
     
-    private fun showLanguageSelection() {
-        val languages = arrayOf("English", "Tiếng Việt", "Español", "Français", "Deutsch")
-        val builder = androidx.appcompat.app.AlertDialog.Builder(this)
-        builder.setTitle("Select Language")
-        builder.setItems(languages) { _, which ->
-            val selectedLanguage = languages[which]
-            prefs.edit().putString("selected_language", selectedLanguage).apply()
-            binding.viewPager.currentItem = 2
-        }
-        builder.show()
-    }
     
     private fun completeOnboarding() {
         prefs.edit().putBoolean("has_completed_onboarding", true).apply()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 }

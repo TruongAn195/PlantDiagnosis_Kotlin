@@ -1,12 +1,11 @@
 package com.expeditee.plantdiagnosis.ui.home
 
-import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.expeditee.plantdiagnosis.R
+import com.expeditee.plantdiagnosis.common.CommonViewModel
+import com.expeditee.plantdiagnosis.common.IFragment
+import com.expeditee.plantdiagnosis.common.IViewModel
+import com.expeditee.plantdiagnosis.databinding.FragmentHomeBinding
+import org.koin.android.ext.android.inject
 
 /**
  * HomeFragment - Fragment trang chủ của ứng dụng
@@ -16,33 +15,33 @@ import com.expeditee.plantdiagnosis.R
  * @author Plant Diagnosis Team
  * @since 1.0.0
  */
-class HomeFragment : Fragment() {
+class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.IState>(
+    FragmentHomeBinding::inflate
+) {
     
     companion object {
         private const val TAG = "HomeFragment"
     }
     
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "onCreateView called")
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    override fun getLazyViewModel() = lazy { 
+        inject<CommonViewModel>().value 
     }
     
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated called")
+    override fun initViews() {
         setupClickListeners()
-        Log.d(TAG, "HomeFragment initialized successfully")
     }
     
-    /**
-     * Thiết lập các click listener cho các button và card
-     */
     private fun setupClickListeners() {
-        // TODO: Thêm click listeners cho các chức năng chính
-        Log.d(TAG, "Click listeners setup completed")
+        viewBinding.cardDiagnose.setOnClickListener {
+        }
+        
+        viewBinding.cardHistory.setOnClickListener {
+        }
+        
+        viewBinding.cardExplore.setOnClickListener {
+        }
+        
+        viewBinding.cardAskAi.setOnClickListener {
+        }
     }
 }

@@ -66,16 +66,14 @@
     <string name="splash_version">v1.0.0</string>
     
     <!-- Onboarding -->
-    <string name="onboarding_welcome_title">Welcome to Plant Diagnosis</string>
-    <string name="onboarding_welcome_desc">Identify plants and diagnose diseases using AI technology</string>
-    <string name="onboarding_language_title">Language Selection</string>
-    <string name="onboarding_language_desc">Choose your preferred language for the best experience</string>
-    <string name="onboarding_get_started_title">Get Started</string>
-    <string name="onboarding_get_started_desc">Start identifying plants and keeping them healthy</string>
-    <string name="onboarding_skip">Skip</string>
-    <string name="onboarding_next">Next</string>
-    <string name="onboarding_select_language">Select Language</string>
-    <string name="onboarding_get_started">Get Started</string>
+    <string name="onboarding_identify_title">Identify Plants</string>
+    <string name="onboarding_identify_desc">You can identify the plants you don\'t know through your camera</string>
+    <string name="onboarding_learn_title">Learn Many Plant Species</string>
+    <string name="onboarding_learn_desc">Let\'s learn about the many plant species that exist in this world</string>
+    <string name="onboarding_articles_title">Read Many Articles About Plants</string>
+    <string name="onboarding_articles_desc">Let\'s learn more about beautiful plants and read many articles about plants and gardening</string>
+    <string name="onboarding_next">NEXT</string>
+    <string name="onboarding_signup">SIGN UP</string>
     
     <!-- Language Selection -->
     <string name="select_language_title">Select Language</string>

@@ -2,10 +2,15 @@ package com.expeditee.plantdiagnosis
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.expeditee.plantdiagnosis.R
 import com.expeditee.plantdiagnosis.databinding.ActivityOnboardingBinding
 import com.expeditee.plantdiagnosis.ui.home.HomeActivity
 import com.expeditee.plantdiagnosis.ui.onboarding.OnboardingAdapter
@@ -39,19 +44,19 @@ class OnboardingActivity : AppCompatActivity() {
     private fun setupOnboarding() {
         val onboardingItems = listOf(
             OnboardingItem(
-                title = "Welcome to Plant Diagnosis",
-                description = "Identify plants and diagnose diseases using AI technology",
-                iconRes = R.drawable.ic_plant_placeholder
+                title = getString(R.string.onboarding_identify_title),
+                description = getString(R.string.onboarding_identify_desc),
+                illustrationRes = R.drawable.ic_onboarding_identify
             ),
             OnboardingItem(
-                title = "AI-Powered Diagnosis",
-                description = "Get instant plant disease diagnosis with advanced AI technology",
-                iconRes = R.drawable.ic_ai
+                title = getString(R.string.onboarding_learn_title),
+                description = getString(R.string.onboarding_learn_desc),
+                illustrationRes = R.drawable.ic_onboarding_learn
             ),
             OnboardingItem(
-                title = "Get Started",
-                description = "Start identifying plants and keeping them healthy",
-                iconRes = R.drawable.ic_home_nav
+                title = getString(R.string.onboarding_articles_title),
+                description = getString(R.string.onboarding_articles_desc),
+                illustrationRes = R.drawable.ic_onboarding_articles
             )
         )
         
@@ -77,17 +82,15 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 updateUI(position)
+                updateDotsIndicator(position)
             }
         })
         
+        setupDotsIndicator()
         setupClickListeners()
     }
     
     private fun setupClickListeners() {
-        binding.btnSkip.setOnClickListener {
-            completeOnboarding()
-        }
-        
         binding.btnNext.setOnClickListener {
             val currentItem = binding.viewPager.currentItem
             if (currentItem < adapter.itemCount - 1) {
@@ -101,20 +104,49 @@ class OnboardingActivity : AppCompatActivity() {
     private fun updateUI(position: Int) {
         when (position) {
             0 -> {
-                binding.btnSkip.visibility = View.VISIBLE
-                binding.btnNext.text = "Next"
+                binding.btnNext.text = getString(R.string.onboarding_next)
             }
             1 -> {
-                binding.btnSkip.visibility = View.VISIBLE
-                binding.btnNext.text = "Next"
+                binding.btnNext.text = getString(R.string.onboarding_next)
             }
             2 -> {
-                binding.btnSkip.visibility = View.GONE
-                binding.btnNext.text = "Get Started"
+                binding.btnNext.text = getString(R.string.onboarding_signup)
             }
         }
     }
     
+    
+    private fun setupDotsIndicator() {
+        val dots = arrayOfNulls<ImageView>(3)
+        
+        for (i in dots.indices) {
+            dots[i] = ImageView(this)
+            val dotSize = 12
+            val dotMargin = 8
+            
+            val params = LinearLayout.LayoutParams(dotSize, dotSize)
+            params.setMargins(dotMargin, 0, dotMargin, 0)
+            dots[i]?.layoutParams = params
+            
+            binding.dotsIndicator.addView(dots[i])
+        }
+        
+        updateDotsIndicator(0)
+    }
+    
+    private fun updateDotsIndicator(position: Int) {
+        val childCount = binding.dotsIndicator.childCount
+        for (i in 0 until childCount) {
+            val dot = binding.dotsIndicator.getChildAt(i) as ImageView
+            val drawable = GradientDrawable().apply {
+                shape = GradientDrawable.OVAL
+                setSize(24, 24)
+                setColor(ContextCompat.getColor(this@OnboardingActivity, 
+                    if (i == position) R.color.primary_green else R.color.light_gray))
+            }
+            dot.setImageDrawable(drawable)
+        }
+    }
     
     private fun completeOnboarding() {
         prefs.edit().putBoolean("has_completed_onboarding", true).apply()

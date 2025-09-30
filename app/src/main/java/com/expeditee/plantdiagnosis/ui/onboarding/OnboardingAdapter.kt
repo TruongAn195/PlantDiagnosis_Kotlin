@@ -16,7 +16,7 @@ class OnboardingAdapter(
         fun bind(item: OnboardingItem, position: Int, onItemClick: (Int) -> Unit) {
             binding.tvTitle.text = item.title
             binding.tvDescription.text = item.description
-            binding.ivIcon.setImageResource(item.iconRes)
+            binding.ivIllustration.setImageResource(item.illustrationRes)
             
             binding.root.setOnClickListener {
                 onItemClick(position)

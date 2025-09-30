@@ -30,6 +30,11 @@ abstract class IViewModel<State : IViewModel.IState>(application: Application) :
         android.util.Log.e("IViewModel", "Coroutine exception: $throwable", throwable)
     }
 
+    private val _purchaseState: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    internal var purchaseState: StateFlow<Boolean> = _purchaseState.asStateFlow()
+    internal val purchaseStateValue: Boolean
+        get() = purchaseState.value
+
     private val _networkState: MutableStateFlow<Boolean> = MutableStateFlow(false)
     internal val networkState: StateFlow<Boolean> = _networkState.asStateFlow()
     internal val networkStateValue: Boolean
@@ -62,21 +67,12 @@ abstract class IViewModel<State : IViewModel.IState>(application: Application) :
 
 class CommonViewModel(application: Application) : IViewModel<IViewModel.IState>(application) {
 
-    init {
-        android.util.Log.d("CommonViewModel", "CommonViewModel initialized")
-    }
-
     internal var introCompleted: Boolean
         get() = appConfigSettings.introCompleted
         set(value) {
             appConfigSettings.introCompleted = value
         }
 
-    internal var currentLanguage: String?
-        get() = appConfigSettings.currentLanguage
-        set(newLanguage) {
-            appConfigSettings.currentLanguage = newLanguage
-        }
 
     override fun onState(state: IState) {
         /* no-op */

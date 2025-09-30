@@ -1,52 +1,47 @@
 package com.expeditee.plantdiagnosis.ui.askai
 
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.expeditee.plantdiagnosis.common.CommonViewModel
-import com.expeditee.plantdiagnosis.common.IFragment
-import com.expeditee.plantdiagnosis.common.IViewModel
-import com.expeditee.plantdiagnosis.databinding.FragmentAskAiBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.expeditee.plantdiagnosis.R
 
-class AskAiFragment : IFragment<FragmentAskAiBinding, CommonViewModel, IViewModel.IState>(
-    FragmentAskAiBinding::inflate
-) {
+/**
+ * AskAiFragment - Fragment hỏi AI của ứng dụng
+ * 
+ * Hiển thị giao diện chat với AI để chẩn đoán bệnh cây
+ * 
+ * @author Plant Diagnosis Team
+ * @since 1.0.0
+ */
+class AskAiFragment : Fragment() {
     
-    override fun getLazyViewModel() = viewModel<CommonViewModel>()
+    companion object {
+        private const val TAG = "AskAiFragment"
+    }
     
-    override fun initViews() {
-        setupRecyclerView()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        Log.d(TAG, "onCreateView called")
+        return inflater.inflate(R.layout.fragment_ask_ai, container, false)
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated called")
         setupClickListeners()
     }
     
-    private fun setupRecyclerView() {
-        viewBinding.rvChatMessages.layoutManager = LinearLayoutManager(context)
-        // TODO: Setup chat messages adapter
-    }
-    
+    /**
+     * Thiết lập các click listener cho chat AI
+     */
     private fun setupClickListeners() {
-        viewBinding.btnSend.setOnClickListener {
-            val message = viewBinding.etMessage.text.toString().trim()
-            if (message.isNotEmpty()) {
-                sendMessage(message)
-                viewBinding.etMessage.text?.clear()
-            }
-        }
-    }
-    
-    private fun sendMessage(message: String) {
-        // TODO: Implement AI chat functionality
-        showProgress(true)
-        
-        // Simulate AI response
-        android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
-            showProgress(false)
-            // Add AI response to chat
-        }, 2000)
-    }
-    
-    private fun showProgress(show: Boolean) {
-        viewBinding.layoutProgress.visibility = if (show) View.VISIBLE else View.GONE
-        viewBinding.btnSend.isEnabled = !show
+        // TODO: Thêm click listeners cho chat AI
+        Log.d(TAG, "Click listeners setup completed")
     }
 }

@@ -1,22 +1,47 @@
 package com.expeditee.plantdiagnosis.ui.explore
 
-import com.expeditee.plantdiagnosis.common.CommonViewModel
-import com.expeditee.plantdiagnosis.common.IFragment
-import com.expeditee.plantdiagnosis.common.IViewModel
-import com.expeditee.plantdiagnosis.databinding.FragmentExploreBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.expeditee.plantdiagnosis.R
 
-class ExploreFragment : IFragment<FragmentExploreBinding, CommonViewModel, IViewModel.IState>(
-    FragmentExploreBinding::inflate
-) {
+/**
+ * ExploreFragment - Fragment khám phá của ứng dụng
+ * 
+ * Hiển thị các chức năng khám phá cây trồng và bệnh tật
+ * 
+ * @author Plant Diagnosis Team
+ * @since 1.0.0
+ */
+class ExploreFragment : Fragment() {
     
-    override fun getLazyViewModel() = viewModel<CommonViewModel>()
+    companion object {
+        private const val TAG = "ExploreFragment"
+    }
     
-    override fun initViews() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        Log.d(TAG, "onCreateView called")
+        return inflater.inflate(R.layout.fragment_explore, container, false)
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated called")
         setupClickListeners()
     }
     
+    /**
+     * Thiết lập các click listener cho các chức năng khám phá
+     */
     private fun setupClickListeners() {
-        // TODO: Setup click listeners for explore options
+        // TODO: Thêm click listeners cho các chức năng khám phá
+        Log.d(TAG, "Click listeners setup completed")
     }
 }

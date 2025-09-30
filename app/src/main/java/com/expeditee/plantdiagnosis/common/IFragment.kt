@@ -4,21 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.CallSuper
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.viewbinding.ViewBinding
-import com.expeditee.plantdiagnosis.helper.AppConfigSettings
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
 
 typealias Inflater<VB> = (LayoutInflater, ViewGroup?, Boolean) -> VB
 
 abstract class IFragment<VB, VM, State>(private val inflate: Inflater<VB>) : Fragment()
-        where VB : ViewBinding, VM : IViewModel<State>, State : IViewModel.IState {
+        where VB : ViewDataBinding, VM : IViewModel<State>, State : IViewModel.IState {
 
-    private val appConfigSettings by inject<AppConfigSettings>()
 
     private var _viewBinding: VB? = null
     protected val viewBinding: VB
@@ -53,27 +52,26 @@ abstract class IFragment<VB, VM, State>(private val inflate: Inflater<VB>) : Fra
         isCreated = true
 
         initViews()
+        initAds()
         initObservers()
         initListeners()
 
-        observerDeviceConnection()
     }
 
-    abstract fun initViews()
-    protected open fun initObservers() = Unit
-    protected open fun initListeners() = Unit
-
-    private fun observerDeviceConnection() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.networkState.collect { connected ->
-                    onDeviceConnectionChanged(connected)
+    @CallSuper
+    protected open fun initAds(block: (suspend CoroutineScope.() -> Unit)? = null) {
+        block?.let {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    it.invoke(this)
                 }
             }
         }
     }
 
-    protected open fun onDeviceConnectionChanged(connected: Boolean) = Unit
+    abstract fun initViews()
+    protected open fun initObservers() = Unit
+    protected open fun initListeners() = Unit
 
     protected fun withViewModels(block: VM.() -> Unit) {
         with(viewModel, block)
@@ -82,6 +80,7 @@ abstract class IFragment<VB, VM, State>(private val inflate: Inflater<VB>) : Fra
     protected fun withViewBindings(block: VB.() -> Unit) {
         with(viewBinding, block)
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

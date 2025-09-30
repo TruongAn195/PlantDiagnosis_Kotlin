@@ -1,27 +1,48 @@
 package com.expeditee.plantdiagnosis.ui.home
 
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.expeditee.plantdiagnosis.common.CommonViewModel
-import com.expeditee.plantdiagnosis.common.IFragment
-import com.expeditee.plantdiagnosis.common.IViewModel
-import com.expeditee.plantdiagnosis.databinding.FragmentHomeBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import android.os.Bundle
+import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.expeditee.plantdiagnosis.R
 
-class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.IState>(
-    FragmentHomeBinding::inflate
-) {
+/**
+ * HomeFragment - Fragment trang chủ của ứng dụng
+ * 
+ * Hiển thị thông tin chào mừng và các chức năng chính của ứng dụng
+ * 
+ * @author Plant Diagnosis Team
+ * @since 1.0.0
+ */
+class HomeFragment : Fragment() {
     
-    override fun getLazyViewModel() = viewModel<CommonViewModel>()
-    
-    override fun initViews() {
-        android.util.Log.d("HomeFragment", "initViews called")
-        setupRecyclerView()
-        android.util.Log.d("HomeFragment", "HomeFragment initialized successfully")
+    companion object {
+        private const val TAG = "HomeFragment"
     }
     
-    private fun setupRecyclerView() {
-        // TODO: Setup recent scans recycler view
-        viewBinding.rvRecentScans.layoutManager = LinearLayoutManager(context)
-        // viewBinding.rvRecentScans.adapter = RecentScansAdapter()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        Log.d(TAG, "onCreateView called")
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+    
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated called")
+        setupClickListeners()
+        Log.d(TAG, "HomeFragment initialized successfully")
+    }
+    
+    /**
+     * Thiết lập các click listener cho các button và card
+     */
+    private fun setupClickListeners() {
+        // TODO: Thêm click listeners cho các chức năng chính
+        Log.d(TAG, "Click listeners setup completed")
     }
 }

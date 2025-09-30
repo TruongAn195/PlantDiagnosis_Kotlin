@@ -1,5 +1,4 @@
 package com.expeditee.plantdiagnosis.common
-
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.res.Configuration
@@ -21,11 +20,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.viewbinding.ViewBinding
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import com.expeditee.plantdiagnosis.helper.AppConfigSettings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Runnable
 import kotlinx.coroutines.launch
@@ -35,20 +33,12 @@ import java.util.Locale
 typealias OnPerformBackPressed = () -> Unit
 
 abstract class IActivity<VB, VM, State> : AppCompatActivity()
-        where VB : ViewBinding, VM : IViewModel<State>, State : IViewModel.IState {
+        where VB : ViewDataBinding, VM : IViewModel<State>, State : IViewModel.IState {
 
-    protected val appConfigSettings by inject<AppConfigSettings>()
-
-    protected val viewModel: VM by lazy {
-        android.util.Log.d("IActivity", "Initializing ViewModel for ${this::class.java.simpleName}")
-        this.getLazyViewModel().value
-    }
+    protected val viewModel: VM by this.getLazyViewModel()
     abstract fun getLazyViewModel(): Lazy<VM>
 
-    protected val viewBinding: VB by lazy {
-        android.util.Log.d("IActivity", "Initializing ViewBinding for ${this::class.java.simpleName}")
-        this.getLazyViewBinding().value
-    }
+    protected val viewBinding: VB by this.getLazyViewBinding()
     abstract fun getLazyViewBinding(): Lazy<VB>
 
     private var onPerformBackPressed: OnPerformBackPressed? = null
@@ -81,35 +71,24 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
         get() = this::class.java.simpleName
 
     override fun attachBaseContext(newBase: Context) {
-        var isoLanguage = appConfigSettings.currentLanguage
-        if (isoLanguage.isNullOrEmpty()) {
-            isoLanguage = Resources.getSystem().configuration.locales[0].language
-        }
-        val newLocale = Locale(isoLanguage)
-        Locale.setDefault(newLocale)
-        val configuration = newBase.resources.configuration
-        configuration.setLocale(newLocale)
-        val newContext = newBase.createConfigurationContext(configuration)
-        super.attachBaseContext(ContextWrapper(newContext))
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        android.util.Log.d("IActivity", "onCreate called for ${this::class.java.simpleName}")
         setupInit()
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
-        // ViewBinding doesn't need lifecycleOwner like DataBinding
+        viewBinding.lifecycleOwner = this@IActivity
         makeDarkStatusBars()
         registerBackPressedDispatcher()
 
-        android.util.Log.d("IActivity", "Calling initViews for ${this::class.java.simpleName}")
+        initAds()
         initViews(savedInstanceState)
         initObservers()
         initListeners()
 
-        observerNetworkState()
-        android.util.Log.d("IActivity", "onCreate completed for ${this::class.java.simpleName}")
+
     }
 
     protected open fun isLightStatusBar(): Boolean = true
@@ -149,26 +128,28 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
 
     protected open fun setupInit() = Unit
 
-    abstract fun initViews(savedInstanceState: Bundle?)
-
     @CallSuper
-    protected open fun initObservers() {
-        // Override in subclasses
-    }
-
-    protected open fun initListeners() = Unit
-
-    private fun observerNetworkState() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.networkState.collect { connected ->
-                    onNetworkState(connected)
+    protected open fun initAds(block: (suspend CoroutineScope.() -> Unit)? = null) {
+        block?.let {
+            lifecycleScope.launch {
+                repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    it.invoke(this)
                 }
             }
         }
     }
 
-    protected open fun onNetworkState(connected: Boolean) = Unit
+    abstract fun initViews(savedInstanceState: Bundle?)
+
+    @CallSuper
+    protected open fun initObservers() {
+        viewModel
+    }
+
+    protected open fun initListeners() = Unit
+
+
+    protected open fun onBillingPurchaseListener(hasPurchase: Boolean) = Unit
 
     protected fun registerNetworkCallback() {
         connectivityManager?.runCatching {
@@ -189,24 +170,6 @@ abstract class IActivity<VB, VM, State> : AppCompatActivity()
         }
     }
 
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        var isoLanguage = appConfigSettings.currentLanguage
-        if (isoLanguage.isNullOrEmpty()) {
-            isoLanguage = Resources.getSystem().configuration.locales[0].language
-        }
-        val newLocale = Locale(isoLanguage)
-        Locale.setDefault(newLocale)
-        newConfig.setLocale(newLocale)
-    }
-
-    protected fun withViewModels(block: VM.() -> Unit) {
-        with(viewModel, block)
-    }
-
-    protected fun withViewBindings(block: VB.() -> Unit) {
-        with(viewBinding, block)
-    }
 
     @CallSuper
     override fun onStart() {

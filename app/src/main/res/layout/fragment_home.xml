@@ -57,24 +57,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Recent Scans -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/recent_scans"
-            android:textColor="@color/dark_green"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Recent Scans List -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRecentScans"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false"
-            tools:listitem="@layout/item_recent_scan" />
-
     </LinearLayout>
 
 </ScrollView>

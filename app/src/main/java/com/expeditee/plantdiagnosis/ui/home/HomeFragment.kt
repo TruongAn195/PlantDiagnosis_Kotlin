@@ -49,11 +49,6 @@ class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.
             // Navigate to reminders
         }
         
-        // Search bar
-        viewBinding.cardSearch.setOnClickListener {
-            // Open search/camera
-        }
-        
         // Specialist consultation
         viewBinding.btnAskExpert.setOnClickListener {
             // Navigate to expert consultation

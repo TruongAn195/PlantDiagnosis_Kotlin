@@ -3,90 +3,20 @@
     
     <style name="Theme.PlantDiagnosis" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary_green</item>
-        <item name="colorPrimaryVariant">@color/primary_green_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/accent_green</item>
-        <item name="colorSecondaryVariant">@color/dark_green</item>
-        <item name="colorOnSecondary">@color/white</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorOnSurface">@color/text_primary</item>
-        <item name="colorSurfaceVariant">@color/light_gray</item>
-        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
         <item name="android:colorBackground">@color/background_primary</item>
         <item name="colorOnBackground">@color/text_primary</item>
-        <item name="colorError">@color/red</item>
-        <item name="colorOnError">@color/white</item>
         <item name="android:statusBarColor">@color/primary_green</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">false</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:textColorPrimary">@color/text_primary</item>
-        <item name="android:textColorSecondary">@color/text_secondary</item>
-        <item name="android:textColorHint">@color/text_hint</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="materialButtonStyle">@style/Widget.PlantDiagnosis.Button</item>
-        <item name="materialButtonOutlinedStyle">@style/Widget.PlantDiagnosis.Button.Outlined</item>
-        <item name="textInputStyle">@style/Widget.PlantDiagnosis.TextInput</item>
-        <item name="bottomNavigationStyle">@style/Widget.PlantDiagnosis.BottomNavigation</item>
-        <item name="toolbarStyle">@style/Widget.PlantDiagnosis.Toolbar</item>
-    </style>
-    
-    <style name="Widget.PlantDiagnosis.Button" parent="Widget.Material3.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="backgroundTint">@color/primary_green</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:minHeight">48dp</item>
-    </style>
-    
-    <style name="Widget.PlantDiagnosis.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:textColor">@color/primary_green</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="strokeColor">@color/primary_green</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:minHeight">48dp</item>
-    </style>
-
-    <style name="Widget.PlantDiagnosis.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="boxCornerRadiusTopStart">8dp</item>
-        <item name="boxCornerRadiusTopEnd">8dp</item>
-        <item name="boxCornerRadiusBottomStart">8dp</item>
-        <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="boxStrokeColor">@color/primary_green</item>
-        <item name="hintTextColor">@color/text_hint</item>
-    </style>
-    
-    <style name="Widget.PlantDiagnosis.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
-        <item name="itemIconTint">@color/bottom_nav_color_selector</item>
-        <item name="itemTextColor">@color/bottom_nav_color_selector</item>
-        <item name="itemTextAppearanceActive">@style/BottomNavTextActive</item>
-        <item name="itemTextAppearanceInactive">@style/BottomNavTextInactive</item>
-    </style>
-    
-    <style name="Widget.PlantDiagnosis.Toolbar" parent="Widget.Material3.Toolbar">
-        <item name="android:background">@color/primary_green</item>
-        <item name="titleTextColor">@color/white</item>
-        <item name="subtitleTextColor">@color/white</item>
-    </style>
-
-    <style name="BottomNavTextActive">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-    </style>
-
-    <style name="BottomNavTextInactive">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
     

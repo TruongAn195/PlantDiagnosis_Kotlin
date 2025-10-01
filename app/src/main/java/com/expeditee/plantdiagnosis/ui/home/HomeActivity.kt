@@ -27,6 +27,7 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
 
     companion object {
         private const val HOME_PAGE = HomePagerAdapter.HOME_PAGE
+        private const val DASHBOARD_PAGE = HomePagerAdapter.DASHBOARD_PAGE
         private const val EXPLORE_PAGE = HomePagerAdapter.EXPLORE_PAGE
         private const val ASK_AI_PAGE = HomePagerAdapter.ASK_AI_PAGE
         private const val SETTINGS_PAGE = HomePagerAdapter.SETTINGS_PAGE
@@ -54,7 +55,7 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
     private fun setupViewPager() {
         with(viewBinding.viewPage2) {
             adapter = HomePagerAdapter(this@HomeActivity)
-            offscreenPageLimit = 3
+            offscreenPageLimit = 4
             isUserInputEnabled = false
             registerOnPageSelected { }
         }
@@ -66,6 +67,10 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
             when (item.itemId) {
                 R.id.homeFragment -> {
                     setCurrentPage(HOME_PAGE)
+                    true
+                }
+                R.id.dashboardFragment -> {
+                    setCurrentPage(DASHBOARD_PAGE)
                     true
                 }
                 R.id.exploreFragment -> {

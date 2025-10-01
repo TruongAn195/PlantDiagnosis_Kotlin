@@ -54,7 +54,7 @@
                             android:textColor="@color/text_primary"
                             android:textSize="@dimen/_20sp"
                             android:textStyle="bold"
-                            android:fontFamily="@font/notosans_bold" />
+                            android:fontFamily="sans-serif-black" />
 
                     </LinearLayout>
 
@@ -87,7 +87,7 @@
                         android:textColor="@color/text_primary"
                         android:textSize="@dimen/_24sp"
                         android:textStyle="bold"
-                        android:fontFamily="@font/notosans_bold" />
+                        android:fontFamily="sans-serif-black" />
 
                     <TextView
                         android:id="@+id/tvMotivationalMessage"
@@ -97,7 +97,7 @@
                         android:text="Let's grow something beautiful today"
                         android:textColor="@color/text_secondary"
                         android:textSize="@dimen/_16sp"
-                        android:fontFamily="@font/notosans_regular" />
+                        android:fontFamily="sans-serif" />
 
                 </LinearLayout>
 
@@ -126,7 +126,7 @@
                             android:text="Search plants name or snap a photo..."
                             android:textColor="@color/text_secondary"
                             android:textSize="@dimen/_14sp"
-                            android:fontFamily="@font/notosans_regular" />
+                            android:fontFamily="sans-serif" />
 
                         <ImageView
                             android:id="@+id/ivCamera"
@@ -148,7 +148,7 @@
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/notosans_bold"
+                    android:fontFamily="sans-serif-black"
                     app:layout_constraintTop_toBottomOf="@id/cardSearch"
                     tools:ignore="MissingConstraints" />
 
@@ -159,7 +159,7 @@
                     android:text="View All >"
                     android:textColor="@color/primary_green"
                     android:textSize="@dimen/_14sp"
-                    android:fontFamily="@font/notosans_medium"
+                    android:fontFamily="sans-serif-medium"
                     app:layout_constraintTop_toTopOf="@id/tvCoreFeatures"
                     app:layout_constraintEnd_toEndOf="parent" />
 
@@ -210,7 +210,7 @@
                                     android:text="Plant Identify"
                                     android:textColor="@color/text_primary"
                                     android:textSize="@dimen/_12sp"
-                                    android:fontFamily="@font/notosans_medium"
+                                    android:fontFamily="sans-serif-medium"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -247,7 +247,7 @@
                                     android:text="My Plants"
                                     android:textColor="@color/text_primary"
                                     android:textSize="@dimen/_12sp"
-                                    android:fontFamily="@font/notosans_medium"
+                                    android:fontFamily="sans-serif-medium"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -293,7 +293,7 @@
                                     android:text="Plant Health"
                                     android:textColor="@color/text_primary"
                                     android:textSize="@dimen/_12sp"
-                                    android:fontFamily="@font/notosans_medium"
+                                    android:fontFamily="sans-serif-medium"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -330,7 +330,7 @@
                                     android:text="Reminders"
                                     android:textColor="@color/text_primary"
                                     android:textSize="@dimen/_12sp"
-                                    android:fontFamily="@font/notosans_medium"
+                                    android:fontFamily="sans-serif-medium"
                                     android:gravity="center" />
 
                             </LinearLayout>
@@ -373,7 +373,7 @@
                                 android:textColor="@color/text_primary"
                                 android:textSize="@dimen/_16sp"
                                 android:textStyle="bold"
-                                android:fontFamily="@font/notosans_bold" />
+                                android:fontFamily="sans-serif-black" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -382,7 +382,7 @@
                                 android:text="Get expert plant advice"
                                 android:textColor="@color/text_secondary"
                                 android:textSize="@dimen/_14sp"
-                                android:fontFamily="@font/notosans_regular" />
+                                android:fontFamily="sans-serif" />
 
                             <com.google.android.material.button.MaterialButton
                                 android:id="@+id/btnAskExpert"
@@ -421,7 +421,7 @@
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_18sp"
                     android:textStyle="bold"
-                    android:fontFamily="@font/notosans_bold"
+                    android:fontFamily="sans-serif-black"
                     app:layout_constraintTop_toBottomOf="@id/cardSpecialist" />
 
                 <TextView
@@ -431,7 +431,7 @@
                     android:text="View All >"
                     android:textColor="@color/primary_green"
                     android:textSize="@dimen/_14sp"
-                    android:fontFamily="@font/notosans_medium"
+                    android:fontFamily="sans-serif-medium"
                     app:layout_constraintTop_toTopOf="@id/tvExplorePlants"
                     app:layout_constraintEnd_toEndOf="parent" />
 

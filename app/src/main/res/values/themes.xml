@@ -1,23 +1,214 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    
+    <!-- Base Application Theme -->
     <style name="Theme.PlantDiagnosis" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
+        <!-- Primary Colors -->
         <item name="colorPrimary">@color/primary_green</item>
         <item name="colorPrimaryVariant">@color/primary_green_dark</item>
         <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
+        
+        <!-- Secondary Colors -->
         <item name="colorSecondary">@color/accent_green</item>
         <item name="colorSecondaryVariant">@color/dark_green</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Hide app name on status bar -->
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Surface Colors -->
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="colorSurfaceVariant">@color/light_gray</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary</item>
+        
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/background_primary</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        
+        <!-- Error Colors -->
+        <item name="colorError">@color/red</item>
+        <item name="colorOnError">@color/white</item>
+        
+        <!-- Status Bar -->
+        <item name="android:statusBarColor">@color/primary_green</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Navigation Bar -->
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        
+        <!-- Window Settings -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:fitsSystemWindows">true</item>
-        <!-- Customize your theme here. -->
+        
+        <!-- Text Styles -->
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        
+        <!-- Button Styles -->
+        <item name="materialButtonStyle">@style/Widget.PlantDiagnosis.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.PlantDiagnosis.Button.Outlined</item>
+        
+        <!-- Card Styles -->
+        <item name="materialCardViewStyle">@style/Widget.PlantDiagnosis.Card</item>
+        
+        <!-- Text Input Styles -->
+        <item name="textInputStyle">@style/Widget.PlantDiagnosis.TextInput</item>
+        
+        <!-- Bottom Navigation -->
+        <item name="bottomNavigationStyle">@style/Widget.PlantDiagnosis.BottomNavigation</item>
+        
+        <!-- App Bar -->
+        <item name="toolbarStyle">@style/Widget.PlantDiagnosis.Toolbar</item>
+    </style>
+    
+    <!-- Text Styles -->
+    <style name="TextAppearance.PlantDiagnosis.Headline1" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Headline2" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Headline3" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Title1" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Title2" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Title3" parent="TextAppearance.Material3.TitleSmall">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Body1" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Body2" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Body3" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <style name="TextAppearance.PlantDiagnosis.Caption" parent="TextAppearance.Material3.LabelSmall">
+        <item name="android:textColor">@color/text_hint</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Base TextAppearance for PlantDiagnosis -->
+    <style name="TextAppearance.PlantDiagnosis" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Button Styles -->
+    <style name="Widget.PlantDiagnosis.Button" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="backgroundTint">@color/primary_green</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+    
+    <style name="Widget.PlantDiagnosis.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/primary_green</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="strokeColor">@color/primary_green</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+    
+    <!-- Card Styles -->
+    <style name="Widget.PlantDiagnosis.Card" parent="Widget.Material3.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+    
+    <!-- Material3 CardView Style -->
+    <style name="Widget.Material3.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardBackgroundColor">@color/white</item>
+    </style>
+    
+    <!-- Text Input Styles -->
+    <style name="Widget.PlantDiagnosis.TextInput" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="boxStrokeColor">@color/primary_green</item>
+        <item name="hintTextColor">@color/text_hint</item>
+    </style>
+    
+    <!-- Bottom Navigation Text Styles -->
+    <style name="BottomNavTextActive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <style name="BottomNavTextInactive">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Bottom Navigation Styles -->
+    <style name="Widget.PlantDiagnosis.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_nav_color_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_color_selector</item>
+        <item name="itemTextAppearanceActive">@style/BottomNavTextActive</item>
+        <item name="itemTextAppearanceInactive">@style/BottomNavTextInactive</item>
+    </style>
+    
+    <!-- Toolbar Styles -->
+    <style name="Widget.PlantDiagnosis.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/primary_green</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
     </style>
 
     <!-- Splash Screen Theme -->
@@ -26,8 +217,21 @@
         <item name="android:statusBarColor">@color/primary_green</item>
         <item name="android:navigationBarColor">@color/primary_green</item>
         <item name="android:windowLightStatusBar">false</item>
-        <!-- Hide app name on splash screen -->
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
     </style>
+    
+    <!-- Camera Activity Theme -->
+    <style name="Theme.PlantDiagnosis.Camera" parent="Theme.PlantDiagnosis">
+        <item name="android:windowBackground">@color/black</item>
+        <item name="android:statusBarColor">@color/black</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+    
+    
 </resources>

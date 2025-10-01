@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -135,6 +136,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     // Camera
+    // CameraX
     implementation("androidx.camera:camera-core:1.3.1")
     implementation("androidx.camera:camera-camera2:1.3.1")
     implementation("androidx.camera:camera-lifecycle:1.3.1")
@@ -147,8 +149,4 @@ dependencies {
     implementation("com.chibatching.kotpref:livedata-support:2.13.1")
     implementation("androidx.lifecycle:lifecycle-livedata:2.2.0")
 
-    implementation("com.google.android.flexbox:flexbox:3.0.0")
-
-    implementation(libs.fancy.show.case)
-    implementation("com.github.Dimezis:BlurView:version-2.0.6")
 }

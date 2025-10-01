@@ -6,6 +6,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
 
     <application
         android:name=".PlantDiagnosisApplication"
@@ -38,16 +47,18 @@
             android:name=".OnboardingActivity"
             android:exported="false"
             android:theme="@style/Theme.PlantDiagnosis" />
-        
-        <activity
-            android:name=".ui.home.MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.PlantDiagnosis" />
             
         <activity
             android:name=".ui.home.HomeActivity"
             android:exported="false"
             android:theme="@style/Theme.PlantDiagnosis" />
+            
+        <activity
+            android:name=".ui.camera.CameraActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PlantDiagnosis.Camera"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize" />
             
     </application>
 

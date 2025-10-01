@@ -36,4 +36,32 @@
     
     <!-- Additional Colors -->
     <color name="transparent">#00000000</color>
+    
+    <!-- Error Colors -->
+    <color name="red">#FFF44336</color>
+    <color name="red_dark">#FFD32F2F</color>
+    
+    <!-- Success Colors -->
+    <color name="success">#FF4CAF50</color>
+    <color name="success_light">#FFC8E6C9</color>
+    
+    <!-- Warning Colors -->
+    <color name="warning">#FFFF9800</color>
+    <color name="warning_light">#FFFFF3E0</color>
+    
+    <!-- Info Colors -->
+    <color name="info">#FF2196F3</color>
+    <color name="info_light">#FFE3F2FD</color>
+    
+    <!-- Surface Colors -->
+    <color name="surface">#FFFFFFFF</color>
+    <color name="surface_variant">#FFF5F5F5</color>
+    <color name="on_surface">#FF212121</color>
+    <color name="on_surface_variant">#FF757575</color>
+    
+    <!-- Overlay Colors -->
+    <color name="overlay_light">#1A000000</color>
+    <color name="overlay_medium">#33000000</color>
+    <color name="overlay_dark">#66000000</color>
+    
 </resources>

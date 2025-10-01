@@ -1,5 +1,6 @@
 package com.expeditee.plantdiagnosis.ui.home
 
+import android.content.Intent
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.expeditee.plantdiagnosis.R
@@ -7,16 +8,9 @@ import com.expeditee.plantdiagnosis.common.CommonViewModel
 import com.expeditee.plantdiagnosis.common.IFragment
 import com.expeditee.plantdiagnosis.common.IViewModel
 import com.expeditee.plantdiagnosis.databinding.FragmentHomeBinding
+import com.expeditee.plantdiagnosis.ui.camera.CameraActivity
 import org.koin.android.ext.android.inject
 
-/**
- * HomeFragment - Fragment trang chủ của ứng dụng PlantPro
- * 
- * Hiển thị thông tin chào mừng và các chức năng chính của ứng dụng
- * 
- * @author Plant Diagnosis Team
- * @since 1.0.0
- */
 class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.IState>(
     FragmentHomeBinding::inflate
 ) {
@@ -39,7 +33,8 @@ class HomeFragment : IFragment<FragmentHomeBinding, CommonViewModel, IViewModel.
     private fun setupClickListeners() {
         // Core Features
         viewBinding.cardPlantIdentify.setOnClickListener {
-            // Navigate to plant identification
+            val intent = Intent(requireContext(), CameraActivity::class.java)
+            startActivity(intent)
         }
         
         viewBinding.cardMyPlants.setOnClickListener {

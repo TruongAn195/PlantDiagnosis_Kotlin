@@ -28,7 +28,7 @@
                     android:id="@+id/tvLanguageName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/notosans_medium"
+                    android:fontFamily="sans-serif-medium"
                     android:text="English"
                     android:textColor="@color/text_primary"
                     android:textSize="@dimen/_16sp" />
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4dp"
-                    android:fontFamily="@font/notosans_regular"
+                    android:fontFamily="sans-serif"
                     android:text="English"
                     android:textColor="@color/text_secondary"
                     android:textSize="@dimen/_14sp" />

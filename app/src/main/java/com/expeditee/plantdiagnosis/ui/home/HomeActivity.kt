@@ -1,7 +1,10 @@
 package com.expeditee.plantdiagnosis.ui.home
 
+import android.Manifest
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.expeditee.plantdiagnosis.R
 import com.expeditee.plantdiagnosis.common.CommonViewModel
@@ -12,25 +15,14 @@ import com.expeditee.plantdiagnosis.extension.launchRepeatOnLifecycle
 import com.expeditee.plantdiagnosis.extension.registerOnPageSelected
 import com.expeditee.plantdiagnosis.extension.statusBars
 import com.expeditee.plantdiagnosis.ui.askai.AskAiFragment
+import com.expeditee.plantdiagnosis.ui.camera.CameraActivity
 import com.expeditee.plantdiagnosis.ui.explore.ExploreFragment
 import com.expeditee.plantdiagnosis.ui.settings.SettingsFragment
+import com.expeditee.plantdiagnosis.utils.CameraPermissionHandler
+import com.expeditee.plantdiagnosis.utils.PermissionUtils
 import kotlinx.coroutines.CoroutineScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * HomeActivity - Activity chính của ứng dụng Plant Diagnosis
- * 
- * Activity này quản lý navigation giữa 4 tab chính của ứng dụng sử dụng ViewPager2:
- * - Home: Trang chủ với danh sách cây trồng và lịch sử chẩn đoán
- * - Explore: Khám phá các loại cây và bệnh tật
- * - Ask AI: Tương tác với AI để chẩn đoán bệnh cây
- * - Settings: Cài đặt ứng dụng và tài khoản
- * 
- * Sử dụng ViewPager2 với HomePagerAdapter để quản lý các fragment và BottomNavigationView để điều hướng
- * 
- * @author Plant Diagnosis Team
- * @since 1.0.0
- */
 class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.IState>() {
 
     companion object {
@@ -38,7 +30,11 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
         private const val EXPLORE_PAGE = HomePagerAdapter.EXPLORE_PAGE
         private const val ASK_AI_PAGE = HomePagerAdapter.ASK_AI_PAGE
         private const val SETTINGS_PAGE = HomePagerAdapter.SETTINGS_PAGE
+        private const val TAG = "HomeActivity"
     }
+    
+    // Camera permission handler
+    private lateinit var cameraPermissionHandler: CameraPermissionHandler
 
     override fun isFitsSystemWindows(): Boolean = false
     override fun getLazyViewModel() = viewModel<CommonViewModel>()
@@ -49,6 +45,7 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
     override fun initViews(savedInstanceState: Bundle?) {
         setupViewPager()
         setupBottomNavigation()
+        setupCameraPermissionHandler()
     }
 
     override fun initAds(block: (suspend CoroutineScope.() -> Unit)?) {
@@ -103,5 +100,54 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
 
     override fun initListeners() {
         super.initListeners()
+    }
+    
+    /**
+     * Thiết lập camera permission handler
+     */
+    private fun setupCameraPermissionHandler() {
+        val permissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
+            cameraPermissionHandler.handlePermissionResult(
+                isGranted,
+                onPermissionGranted = {
+                    Log.d(TAG, "Camera permission granted, opening camera")
+                    openCameraActivity()
+                },
+                onPermissionDenied = {
+                    Log.d(TAG, "Camera permission denied")
+                    // Có thể hiển thị thông báo hoặc làm gì đó khác
+                }
+            )
+        }
+        
+        cameraPermissionHandler = CameraPermissionHandler(this, permissionLauncher)
+    }
+    
+    /**
+     * Kiểm tra permission và mở camera activity
+     */
+    fun openCameraWithPermissionCheck() {
+        Log.d(TAG, "Checking camera permission before opening camera")
+        cameraPermissionHandler.checkAndRequestCameraPermission(
+            onPermissionGranted = {
+                Log.d(TAG, "Camera permission already granted, opening camera")
+                openCameraActivity()
+            },
+            onPermissionDenied = {
+                Log.d(TAG, "Camera permission denied by user")
+                // Có thể hiển thị thông báo hoặc làm gì đó khác
+            }
+        )
+    }
+    
+    /**
+     * Mở camera activity
+     */
+    private fun openCameraActivity() {
+        Log.d(TAG, "Opening camera activity")
+        val intent = Intent(this, CameraActivity::class.java)
+        startActivity(intent)
     }
 }

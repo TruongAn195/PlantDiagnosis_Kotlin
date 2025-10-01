@@ -32,7 +32,7 @@
                 android:textColor="@color/text_primary"
                 android:textSize="@dimen/_14sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/notosans_bold"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:layout_gravity="center" />
 

@@ -4,6 +4,7 @@ import com.expeditee.plantdiagnosis.common.CommonViewModel
 import com.expeditee.plantdiagnosis.helper.AppConfigSettings
 import com.expeditee.plantdiagnosis.network.PlantDiagnosisApiService
 import com.expeditee.plantdiagnosis.network.PlantDiagnosisRepository
+import com.expeditee.plantdiagnosis.ui.camera.CameraViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -31,5 +32,10 @@ val appModule = module {
     viewModel { 
         android.util.Log.d("appModule", "Creating CommonViewModel")
         CommonViewModel(get()) 
+    }
+    
+    viewModel { 
+        android.util.Log.d("appModule", "Creating CameraViewModel")
+        CameraViewModel(get()) 
     }
 }

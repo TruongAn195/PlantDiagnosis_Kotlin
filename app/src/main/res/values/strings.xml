@@ -46,7 +46,6 @@
     
     <!-- Home Tab -->
     <string name="welcome_message">Welcome to Plant Diagnosis</string>
-    <string name="scan_plant">Scan Plant</string>
     <string name="recent_scans">Recent Scans</string>
     
     <!-- Explore Tab -->
@@ -75,6 +74,26 @@
     <string name="linked_accounts">Linked Accounts</string>
     <string name="data_analytics">Data &amp; Analytics</string>
     <string name="subscription">Subscription</string>
+    
+    <!-- Camera Activity -->
+    <string name="scan_plant">Scan Plant</string>
+    <string name="focus_on_plant_leaf">Focus on plant leaf for best results</string>
+    <string name="plant_type">Plant Type</string>
+    <string name="auto_detect">Auto Detect</string>
+    <string name="identify">Identify</string>
+    <string name="diagnose">Diagnose</string>
+    <string name="health_check">Health Check</string>
+    <string name="camera_position_leaf">Position leaf within frame</string>
+    <string name="camera_identifying_plants">Identifying Plants...</string>
+    <string name="camera_photo_capture_failed">Photo capture failed</string>
+    <string name="camera_permissions_not_granted">Permissions not granted by the user.</string>
+    <string name="camera_plant_identification_completed">Plant identification completed!</string>
+    <string name="camera_expert_consultation_coming_soon">Expert consultation feature coming soon!</string>
+    <string name="camera_close">Close</string>
+    <string name="camera_flash">Flash</string>
+    <string name="camera_gallery">Gallery</string>
+    <string name="camera_take_photo">Take Photo</string>
+    <string name="camera_expert">Expert</string>
     
     <!-- Splash Screen -->
     <string name="splash_tagline">Identify plants with AI</string>

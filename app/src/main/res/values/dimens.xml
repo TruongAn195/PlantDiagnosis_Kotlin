@@ -109,4 +109,5 @@
     
     <!-- Additional dimensions -->
     <dimen name="_24dp">24dp</dimen>
+    <dimen name="_150dp">150dp</dimen>
 </resources>

@@ -17,7 +17,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_16dp">
+                android:padding="@dimen/_16dp"
+                android:layout_marginBottom="@dimen/_16dp"
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginEnd="@dimen/_20dp">
 
                 <LinearLayout
                     android:id="@+id/llGreeting"
@@ -73,7 +76,6 @@
                     app:layout_constraintTop_toTopOf="@id/tvCoreFeatures"
                     app:layout_constraintEnd_toEndOf="parent" />
 
-                <!-- Features Grid -->
                 <LinearLayout
                     android:id="@+id/llFeaturesGrid"
                     android:layout_width="match_parent"
@@ -81,171 +83,138 @@
                     android:orientation="vertical"
                     app:layout_constraintTop_toBottomOf="@id/tvCoreFeatures">
 
-                    <!-- Row 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_12dp"
                         android:orientation="horizontal">
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:id="@+id/cardPlantIdentify"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_12dp"
-                            app:cardElevation="@dimen/_2dp"
-                            app:strokeColor="@color/primary_green"
-                            app:strokeWidth="2dp">
+                            android:layout_height="@dimen/_120dp"
+                            android:layout_marginEnd="@dimen/_8dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_rounded_border_green"
+                            android:padding="@dimen/_16dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:src="@drawable/ic_camera"
+                                android:contentDescription="Plant Identify"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_16dp">
+                                android:layout_marginTop="@dimen/_8dp"
+                                android:text="Plant Identify"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_12sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center" />
 
-                                <ImageView
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_camera"
-                                    android:contentDescription="Plant Identify"
-                                    app:tint="@color/primary_green" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_8dp"
-                                    android:text="Plant Identify"
-                                    android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:gravity="center" />
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:id="@+id/cardMyPlants"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_12dp"
-                            app:cardElevation="@dimen/_2dp">
+                            android:layout_height="@dimen/_120dp"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_rounded_light_green"
+                            android:padding="@dimen/_16dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:src="@drawable/ic_plant"
+                                android:contentDescription="My Plants"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_16dp">
+                                android:layout_marginTop="@dimen/_8dp"
+                                android:text="My Plants"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_12sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center" />
 
-                                <ImageView
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_plant"
-                                    android:contentDescription="My Plants"
-                                    app:tint="@color/primary_green" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_8dp"
-                                    android:text="My Plants"
-                                    android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:gravity="center" />
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                    <!-- Row 2 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_12dp"
                         android:orientation="horizontal">
 
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:id="@+id/cardPlantHealth"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_12dp"
-                            app:cardElevation="@dimen/_2dp">
+                            android:layout_height="@dimen/_120dp"
+                            android:layout_marginEnd="@dimen/_8dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_rounded_light_green"
+                            android:padding="@dimen/_16dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:src="@drawable/ic_plant"
+                                android:contentDescription="Plant Health"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_16dp">
+                                android:layout_marginTop="@dimen/_8dp"
+                                android:text="Plant Health"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_12sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center" />
 
-                                <ImageView
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_plant"
-                                    android:contentDescription="Plant Health"
-                                    app:tint="@color/primary_green" />
+                        </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_8dp"
-                                    android:text="Plant Health"
-                                    android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:gravity="center" />
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <LinearLayout
                             android:id="@+id/cardReminders"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_6dp"
                             android:layout_weight="1"
-                            app:cardCornerRadius="@dimen/_12dp"
-                            app:cardElevation="@dimen/_2dp">
+                            android:layout_height="@dimen/_120dp"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:background="@drawable/bg_rounded_light_green"
+                            android:padding="@dimen/_16dp">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <ImageView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:src="@drawable/ic_history"
+                                android:contentDescription="Reminders"
+                                app:tint="@color/primary_green" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/_16dp">
+                                android:layout_marginTop="@dimen/_8dp"
+                                android:text="Reminders"
+                                android:textColor="@color/text_primary"
+                                android:textSize="@dimen/_12sp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center" />
 
-                                <ImageView
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
-                                    android:src="@drawable/ic_history"
-                                    android:contentDescription="Reminders"
-                                    app:tint="@color/primary_green" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/_8dp"
-                                    android:text="Reminders"
-                                    android:textColor="@color/text_primary"
-                                    android:textSize="@dimen/_12sp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:gravity="center" />
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -351,8 +320,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:clipToPadding="false"
-                    android:paddingStart="@dimen/_4dp"
-                    android:paddingEnd="@dimen/_4dp"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_16dp"
+                    android:paddingTop="@dimen/_8dp"
+                    android:paddingBottom="@dimen/_8dp"
                     app:layout_constraintTop_toBottomOf="@id/tvExplorePlants" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

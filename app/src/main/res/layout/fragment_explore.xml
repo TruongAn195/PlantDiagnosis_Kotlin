@@ -13,7 +13,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/_16dp">
+        android:padding="@dimen/_16dp"
+        android:layout_marginStart="@dimen/_20dp"
+        android:layout_marginEnd="@dimen/_20dp">
 
         <!-- Search Bar -->
         <com.google.android.material.textfield.TextInputLayout
@@ -35,148 +37,127 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Plant Library Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120dp"
             android:layout_marginBottom="@dimen/_16dp"
-            app:cardCornerRadius="@dimen/_12dp"
-            app:cardElevation="@dimen/_4dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_16dp"
+            android:background="@drawable/bg_rounded_light_green">
+
+            <ImageView
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_60dp"
+                android:src="@drawable/ic_plant_placeholder"
+                android:layout_marginEnd="@dimen/_16dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_16dp">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="@dimen/_60dp"
-                    android:layout_height="@dimen/_60dp"
-                    android:src="@drawable/ic_plant_placeholder"
-                    android:layout_marginEnd="@dimen/_16dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:text="@string/plant_library"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/plant_library"
-                        android:textColor="@color/dark_green"
-                        android:textSize="@dimen/_16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Browse plant database"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_14sp" />
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Browse plant database"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sp" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <!-- Disease Database Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120dp"
             android:layout_marginBottom="@dimen/_16dp"
-            app:cardCornerRadius="@dimen/_12dp"
-            app:cardElevation="@dimen/_4dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_16dp"
+            android:background="@drawable/bg_rounded_light_green">
+
+            <ImageView
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_60dp"
+                android:src="@drawable/ic_plant_placeholder"
+                android:layout_marginEnd="@dimen/_16dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_16dp">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="@dimen/_60dp"
-                    android:layout_height="@dimen/_60dp"
-                    android:src="@drawable/ic_plant_placeholder"
-                    android:layout_marginEnd="@dimen/_16dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:text="@string/disease_database"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/disease_database"
-                        android:textColor="@color/dark_green"
-                        android:textSize="@dimen/_16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learn about plant diseases"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_14sp" />
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Learn about plant diseases"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sp" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <!-- Care Tips Card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120dp"
             android:layout_marginBottom="@dimen/_16dp"
-            app:cardCornerRadius="@dimen/_12dp"
-            app:cardElevation="@dimen/_4dp">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_16dp"
+            android:background="@drawable/bg_rounded_light_green">
+
+            <ImageView
+                android:layout_width="@dimen/_60dp"
+                android:layout_height="@dimen/_60dp"
+                android:src="@drawable/ic_plant_placeholder"
+                android:layout_marginEnd="@dimen/_16dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_16dp">
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="@dimen/_60dp"
-                    android:layout_height="@dimen/_60dp"
-                    android:src="@drawable/ic_plant_placeholder"
-                    android:layout_marginEnd="@dimen/_16dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:text="@string/care_tips"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/_16sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/care_tips"
-                        android:textColor="@color/dark_green"
-                        android:textSize="@dimen/_16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Plant care guides"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_14sp" />
-
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plant care guides"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/_14sp" />
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 

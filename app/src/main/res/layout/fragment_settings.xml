@@ -65,24 +65,21 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_16dp">
+                android:padding="@dimen/_16dp"
+                android:layout_marginStart="@dimen/_20dp"
+                android:layout_marginEnd="@dimen/_20dp">
 
                 <!-- User Profile Section -->
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardUserProfile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_24dp"
-                    app:cardCornerRadius="@dimen/_16dp"
-                    app:cardElevation="@dimen/_4dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/_20dp"
+                    android:background="@drawable/bg_rounded_light_green"
                     app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:padding="@dimen/_20dp">
 
                         <!-- Profile Picture with Pro Badge -->
                         <FrameLayout
@@ -154,9 +151,7 @@
                             android:src="@drawable/ic_arrow_right"
                             android:contentDescription="Navigate" />
 
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
 
                 <TextView
@@ -172,19 +167,14 @@
                     app:layout_constraintTop_toBottomOf="@id/cardUserProfile"
                     tools:ignore="MissingConstraints" />
 
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardPersonalization"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_24dp"
-                    app:cardCornerRadius="@dimen/_12dp"
-                    app:cardElevation="@dimen/_2dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_light_green"
                     app:layout_constraintTop_toBottomOf="@id/tvPersonalization">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
                         <!-- Profile -->
                         <LinearLayout
@@ -351,9 +341,7 @@
 
                         </LinearLayout>
 
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
                 <!-- Account Section -->
                 <TextView
@@ -368,19 +356,14 @@
                     android:fontFamily="sans-serif-black"
                     app:layout_constraintTop_toBottomOf="@id/cardPersonalization" />
 
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_24dp"
-                    app:cardCornerRadius="@dimen/_12dp"
-                    app:cardElevation="@dimen/_2dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_rounded_light_green"
                     app:layout_constraintTop_toBottomOf="@id/tvAccount">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
                         <!-- Account & Security -->
                         <LinearLayout
@@ -498,9 +481,7 @@
 
                         </LinearLayout>
 
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
                 <!-- Subscription Section -->
                 <TextView

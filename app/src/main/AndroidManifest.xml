@@ -31,7 +31,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.PlantDiagnosis.Splash">
+            android:theme="@style/Theme.PlantDiagnosis">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -56,7 +56,7 @@
         <activity
             android:name=".ui.camera.CameraActivity"
             android:exported="false"
-            android:theme="@style/Theme.PlantDiagnosis.Camera"
+            android:theme="@style/Theme.PlantDiagnosis"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize" />
             

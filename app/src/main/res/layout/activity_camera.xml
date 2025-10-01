@@ -3,24 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presenter.scan.ScanActivity">
+        tools:context=".ui.camera.CameraActivity">
 
         <androidx.camera.view.PreviewView
             android:id="@+id/cameraPreviewView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:scaleType="fillCenter"
+            app:scaleType="fitCenter"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <com.expeditee.plantdiagnosis.widget.PlantFocusOverlayView
-            android:id="@+id/viewDocumentOverlay"
+            android:id="@+id/viewPlantFocusOverlay"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -59,10 +60,21 @@
                     android:textColor="@color/white"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ivFlash"
                     app:layout_constraintStart_toEndOf="@+id/ivBack"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:text="string/scan" />
+                    android:text="@string/scan_plant" />
 
+                <ImageView
+                    android:id="@+id/ivFlash"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_flash_auto"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -84,24 +96,17 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:text="@string/focus_on_plant_leaf"
                 android:textColor="@color/white"
-                android:textSize="14sp"
-              />
-
-            <ImageView
-                android:id="@+id/ivFocusHint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="4dp"
-                android:src="@drawable/ic_flash_on" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutLanguageSelection"
+            android:id="@+id/layoutPlantTypeSelection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_choose_plant_type"
             android:gravity="center_vertical"
             android:visibility="gone"
             android:orientation="horizontal"
@@ -116,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="tring/translate_to"
+                android:text="@string/plant_type"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -125,15 +130,20 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
+            <ImageView
+                android:id="@+id/ivPlantIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_plant_placeholder" />
 
             <TextView
-                android:id="@+id/tvLanguage"
+                android:id="@+id/tvPlantType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_8dp"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:text="English"
+                android:text="@string/auto_detect"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -169,21 +179,26 @@
                 app:tabIndicatorHeight="0dp"
                 app:tabSelectedTextColor="@color/white"
                 app:tabTextColor="@color/white"
-                app:tabBackground="@drawable/tab_selector"
-                app:tabTextAppearance="@style/ScanTabTextAppearance">
+                app:tabBackground="@drawable/tab_selector">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="string/general" />
+                    android:text="@string/identify" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="string/translate" />
+                    android:text="@string/diagnose" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/health_check" />
 
             </com.google.android.material.tabs.TabLayout>
 
+            <!-- Camera Controls -->
             <LinearLayout
                 android:id="@+id/layoutCameraControls"
                 android:layout_width="match_parent"
@@ -206,14 +221,15 @@
                     android:layout_height="68dp"
                     android:layout_weight="1"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_expert"
+                    android:src="@drawable/ic_shutter"
                     android:backgroundTint="@color/white" />
 
                 <ImageView
-                    android:id="@+id/ivEdit"
+                    android:id="@+id/ivSettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_shutter"
+                    android:src="@drawable/ic_settings"
+                    android:visibility="invisible"
                     android:layout_weight="1"
                     android:padding="12dp" />
 

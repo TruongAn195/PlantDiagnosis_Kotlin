@@ -16,7 +16,7 @@ class PlantFocusOverlayView @JvmOverloads constructor(
     private val framePaint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val clearPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-    private val overlayColor = ContextCompat.getColor(context, R.color.red)
+    private val overlayColor = ContextCompat.getColor(context, R.color.overlay_light)
     private val frameColor = ContextCompat.getColor(context, R.color.accent_green)
 
     private var frameWidth = 4f

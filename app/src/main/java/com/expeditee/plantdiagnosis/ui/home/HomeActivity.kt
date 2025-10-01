@@ -33,7 +33,6 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
         private const val TAG = "HomeActivity"
     }
     
-    // Camera permission handler
     private lateinit var cameraPermissionHandler: CameraPermissionHandler
 
     override fun isFitsSystemWindows(): Boolean = false
@@ -49,8 +48,7 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
     }
 
     override fun initAds(block: (suspend CoroutineScope.() -> Unit)?) {
-        super.initAds {
-        }
+        super.initAds { }
     }
 
     private fun setupViewPager() {
@@ -58,8 +56,7 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
             adapter = HomePagerAdapter(this@HomeActivity)
             offscreenPageLimit = 3
             isUserInputEnabled = false
-            registerOnPageSelected {
-            }
+            registerOnPageSelected { }
         }
         setCurrentPage(HOME_PAGE)
     }
@@ -94,17 +91,13 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
 
     override fun initObservers() {
         super.initObservers()
-        launchRepeatOnLifecycle {
-        }
+        launchRepeatOnLifecycle { }
     }
 
     override fun initListeners() {
         super.initListeners()
     }
     
-    /**
-     * Thiết lập camera permission handler
-     */
     private fun setupCameraPermissionHandler() {
         val permissionLauncher = registerForActivityResult(
             ActivityResultContracts.RequestPermission()
@@ -117,7 +110,6 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
                 },
                 onPermissionDenied = {
                     Log.d(TAG, "Camera permission denied")
-                    // Có thể hiển thị thông báo hoặc làm gì đó khác
                 }
             )
         }
@@ -125,9 +117,6 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
         cameraPermissionHandler = CameraPermissionHandler(this, permissionLauncher)
     }
     
-    /**
-     * Kiểm tra permission và mở camera activity
-     */
     fun openCameraWithPermissionCheck() {
         Log.d(TAG, "Checking camera permission before opening camera")
         cameraPermissionHandler.checkAndRequestCameraPermission(
@@ -137,14 +126,10 @@ class HomeActivity : IActivity<ActivityHomeBinding, CommonViewModel, IViewModel.
             },
             onPermissionDenied = {
                 Log.d(TAG, "Camera permission denied by user")
-                // Có thể hiển thị thông báo hoặc làm gì đó khác
             }
         )
     }
     
-    /**
-     * Mở camera activity
-     */
     private fun openCameraActivity() {
         Log.d(TAG, "Opening camera activity")
         val intent = Intent(this, CameraActivity::class.java)

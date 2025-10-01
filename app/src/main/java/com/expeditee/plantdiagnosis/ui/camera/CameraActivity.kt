@@ -68,32 +68,21 @@ class CameraActivity : IActivity<ActivityCameraBinding, CameraViewModel, CameraV
         viewBinding.ivCameraShutter.setOnClickListener {
             takePicture()
         }
-
-        viewBinding.ivEdit.setOnClickListener {
-        }
-
-        viewBinding.ivFocusHint.setOnClickListener {
-        }
-
     }
 
     override fun initObservers() {
         super.initObservers()
-
     }
 
     private fun setupTabLayout() {
         viewBinding.tabLayoutModes.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) { }
+            override fun onTabUnselected(tab: TabLayout.Tab?) { }
+            override fun onTabReselected(tab: TabLayout.Tab?) { }
         })
     }
 
-    private fun checkCameraPermission() {
-
-    }
+    private fun checkCameraPermission() { }
 
     private fun setupCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(this)
@@ -146,7 +135,6 @@ class CameraActivity : IActivity<ActivityCameraBinding, CameraViewModel, CameraV
             ContextCompat.getMainExecutor(this),
             object : ImageCapture.OnImageSavedCallback {
                 override fun onError(exception: ImageCaptureException) {
-                    // Handle error
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
@@ -172,9 +160,7 @@ class CameraActivity : IActivity<ActivityCameraBinding, CameraViewModel, CameraV
         }
     }
 
-    private fun navigateToCrop(imageUri: Uri, imageSource: String) {
-
-    }
+    private fun navigateToCrop(imageUri: Uri, imageSource: String) { }
 
 
     private fun setupToolbars() {

@@ -24,21 +24,11 @@ class OnboardingActivity : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        android.util.Log.d("OnboardingActivity", "onCreate called")
+        binding = ActivityOnboardingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         
-        try {
-            binding = ActivityOnboardingBinding.inflate(layoutInflater)
-            setContentView(binding.root)
-            
-            prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
-            setupOnboarding()
-            android.util.Log.d("OnboardingActivity", "onCreate completed successfully")
-        } catch (e: Exception) {
-            android.util.Log.e("OnboardingActivity", "Error in onCreate: ${e.message}", e)
-            // Fallback to HomeActivity if OnboardingActivity fails
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
-        }
+        prefs = getSharedPreferences("app_prefs", MODE_PRIVATE)
+        setupOnboarding()
     }
     
     private fun setupOnboarding() {
@@ -62,18 +52,8 @@ class OnboardingActivity : AppCompatActivity() {
         
         adapter = OnboardingAdapter(onboardingItems) { position ->
             when (position) {
-                0 -> {
-                    // First page - just continue
-                    binding.viewPager.currentItem = 1
-                }
-                1 -> {
-                    // Second page - continue
-                    binding.viewPager.currentItem = 2
-                }
-                2 -> {
-                    // Last page - complete onboarding
-                    completeOnboarding()
-                }
+                0, 1 -> binding.viewPager.currentItem = position + 1
+                2 -> completeOnboarding()
             }
         }
         
@@ -102,16 +82,10 @@ class OnboardingActivity : AppCompatActivity() {
     }
     
     private fun updateUI(position: Int) {
-        when (position) {
-            0 -> {
-                binding.btnNext.text = getString(R.string.onboarding_next)
-            }
-            1 -> {
-                binding.btnNext.text = getString(R.string.onboarding_next)
-            }
-            2 -> {
-                binding.btnNext.text = getString(R.string.onboarding_signup)
-            }
+        binding.btnNext.text = if (position == 2) {
+            getString(R.string.onboarding_signup)
+        } else {
+            getString(R.string.onboarding_next)
         }
     }
     

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <!-- High Quality Image Styles -->
     <style name="HighQualityImageView">
         <item name="android:scaleType">centerInside</item>
         <item name="android:adjustViewBounds">true</item>
@@ -15,105 +14,6 @@
         <item name="android:antialias">true</item>
         <item name="android:filterTouchesWhenObscured">false</item>
         <item name="android:layerType">software</item>
-    </style>
-    
-    <!-- Custom Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.LargeTitle">
-        <item name="android:textAppearance">@style/TextAppearance.PlantDiagnosis.Headline1</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Title">
-        <item name="android:textAppearance">@style/TextAppearance.PlantDiagnosis.Title1</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Subtitle">
-        <item name="android:textAppearance">@style/TextAppearance.PlantDiagnosis.Title2</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Body">
-        <item name="android:textAppearance">@style/TextAppearance.PlantDiagnosis.Body1</item>
-    </style>
-    
-    
-    <!-- Button Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.Button">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Button.Outlined">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textColor">@color/primary_green</item>
-    </style>
-    
-    <!-- Card Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.CardTitle">
-        <item name="android:textSize">18sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.CardSubtitle">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/text_secondary</item>
-    </style>
-    
-    <!-- Navigation Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.NavLabel">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-    </style>
-    
-    <!-- Form Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.Label">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
-        <item name="android:textColor">@color/text_primary</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Hint">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/text_hint</item>
-    </style>
-    
-    <!-- Status Text Styles -->
-    <style name="TextAppearance.PlantDiagnosis.Success">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/success</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Error">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/red</item>
-    </style>
-    
-    <style name="TextAppearance.PlantDiagnosis.Warning">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/warning</item>
-    </style>
-    
-    <!-- Camera Tab Text Style -->
-    <style name="ScanTabTextAppearance">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:fontFamily">sans-serif-black</item>
     </style>
     
 </resources>
